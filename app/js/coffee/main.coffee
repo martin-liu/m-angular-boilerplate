@@ -1,7 +1,6 @@
 'use strict'
 window.App = angular.module 'app', ['m-directive', 'ngSanitize', 'ngRoute'
-, 'config', 'restangular', 'ui.bootstrap', 'ngDragDrop'
-, 'highcharts-ng', 'ui.sortable', 'headroom']
+, 'config', 'restangular', 'ui.bootstrap', 'headroom']
 
 App.config ($provide, $httpProvider, RestangularProvider) ->
   # Restangular base url

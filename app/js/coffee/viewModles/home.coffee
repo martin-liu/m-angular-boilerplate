@@ -1,5 +1,5 @@
 App.factory 'HomeViewModel', ($q, $location, $timeout, Constant
-, BaseViewModel, ReportRemoteService, ChartService, Util, Cache) ->
+, BaseViewModel, Util, Cache) ->
 
   class HomeViewModel extends BaseViewModel
     ## Override

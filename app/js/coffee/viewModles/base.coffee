@@ -1,5 +1,5 @@
 App.factory 'BaseViewModel', ($q, $location, PiwikService
-, ReportRemoteService, LoadingService) ->
+, LoadingService) ->
 
   class BaseViewModel
     constructor : (@scope)->
