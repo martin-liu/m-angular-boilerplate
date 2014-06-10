@@ -57,7 +57,7 @@ module.exports = function (grunt) {
           {
             expand: true,
             cwd: 'tmp/',
-            src: ['index.php', 'maintainance.html', 'js/scripts.min.js', 'js/json2.js', 'image/**', 'fonts/*', 'css/styles.min.css', 'routes.json'],
+            src: ['index.html', 'maintainance.html', 'js/scripts.min.js', 'js/json2.js', 'image/**', 'fonts/*', 'css/styles.min.css', 'routes.json'],
             dest: 'dist/',
             rename: function(desc, src){
               return desc + src.replace('min.', 'min.<%= buildNumber %>.')
@@ -109,7 +109,7 @@ module.exports = function (grunt) {
     },
     htmlrefs: {
       dist: {
-        src: 'tmp/index.php',
+        src: 'tmp/index.html',
         dest: 'tmp/'
       },
       options: {
@@ -164,7 +164,7 @@ module.exports = function (grunt) {
         ]
       },
       manifest: {
-        src: ['tmp/index.php'],
+        src: ['tmp/index.html'],
         actions: [
           {
             name: 'manifest',
