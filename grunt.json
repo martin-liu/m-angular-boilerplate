@@ -1,0 +1,44 @@
+{
+    "bump": {
+        "options": {
+            "files": ["package.json", "bower.json", "app/config.prod.json", "app/config.dev.json", "app/config.json.dist"],
+            "commitFiles": ["package.json", "bower.json", "app/config.prod.json", "app/config.dev.json", "app/config.json.dist", "CHANGELOG.md"]
+        }
+    },
+    "concat": {
+        "components": {
+            "src": [
+                "app/components/jquery/dist/jquery.min.js",
+                "app/components/jquery-ui/ui/minified/jquery-ui.min.js",
+                "app/components/angular/angular.min.js",
+                "app/components/angular-sanitize/angular-sanitize.min.js",
+                "app/components/angular-route/angular-route.min.js",
+                "app/components/angular-bootstrap/ui-bootstrap.min.js",
+                "app/components/angular-bootstrap/ui-bootstrap-tpls.min.js",
+                "components/angular-strap/dist/angular-strap.min.js",
+                "components/angular-strap/dist/angular-strap.tpl.min.js",
+                "app/components/angular-dragdrop/src/angular-dragdrop.min.js",
+                "app/components/lodash/dist/lodash.min.js",
+                "app/components/restangular/dist/restangular.min.js",
+                "app/components/highcharts/highcharts.js",
+                "app/components/highcharts-ng/dist/highcharts-ng.min.js",
+                "app/components/angular-ui-sortable/sortable.min.js",
+                "app/components/locache/build/locache.min.js",
+                "app/components/headroom.js/dist/headroom.min.js",
+                "app/components/headroom.js/dist/angular.headroom.min.js",
+                "app/components/piwik/piwik.js",
+                "tmp/js/scripts.js"
+            ],
+            "dest": "tmp/js/scripts.min.js"
+        },
+        "css":{
+            "src": [
+                "app/components/bootstrap/dist/css/bootstrap.min.css",
+                "app/components/font-awesome/css/font-awesome.min.css",
+                "app/components/animate.css/animate.min.css",
+                "tmp/css/styles.css"
+            ],
+            "dest": "tmp/css/styles.min.css"
+        }
+    }
+}

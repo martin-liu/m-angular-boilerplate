@@ -1,0 +1,19 @@
+'use strict';
+
+// This is used for local env
+App.run(function($http, $rootScope) {
+  // Init user
+  var user = {
+    nt : 'xiaodyang',
+    firstName : 'Xiaodong',
+    lastName : 'Yang',
+    displayName : 'Yang, Xiaodong',
+    label : 'Yang, Xiaodong(xiaodyang)'
+  };
+  $rootScope.user = user;
+  $rootScope.initiated = true;
+
+
+  // Init debug information
+  window.scope = $rootScope;
+});

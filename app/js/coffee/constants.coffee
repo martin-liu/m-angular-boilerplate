@@ -1,0 +1,2 @@
+App.constant 'Constant',
+  dict: {}

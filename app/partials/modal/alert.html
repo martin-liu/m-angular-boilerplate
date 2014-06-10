@@ -1,0 +1,27 @@
+<div class="animated {{ animate }}">
+    <div class="modal-header" style="padding: 0 15px">
+        <h4 ng-if="type == 'success'">Success!</h4>
+        <h4 ng-if="type == 'fail'">Fail!</h4>
+        <h4 ng-if="type == 'confirm'">Confirm</h4>
+    </div>
+    <div class="modal-body">
+        <p class="alert alert-success" ng-if="type == 'success'">
+            {{ message }}
+        </p>
+        <p class="alert alert-danger" ng-if="type == 'fail'">
+            {{ message }}
+        </p>
+        <p class="alert alert-warning" ng-if="type == 'confirm'">
+            {{ message }}
+        </p>
+    </div>
+    <div class="modal-footer" style="padding: 5px 20px">
+      <div ng-if="type == 'confirm'">
+        <button ng-click="close(true)" class="btn btn-primary" >Yes</button>
+        <button ng-click="close(false)" class="btn btn-primary" >No</button>
+      </div>
+      <div ng-if="type != 'confirm'">
+        <button ng-click="close()" class="btn btn-primary" >Close</button>
+      </div>
+    </div>
+</div>iv>

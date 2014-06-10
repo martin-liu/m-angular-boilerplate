@@ -1,0 +1,13 @@
+<div class="{{ animate }}">
+    <div class="modal-header">
+        <h4>Request Error</h4>
+    </div>
+    <div class="modal-body">
+        <p class="alert alert-danger">
+            {{ message ? message : dict.get('unkownError') }}
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="close()" class="btn btn-primary" >Close</button>
+    </div>
+</div>

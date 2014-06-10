@@ -1,0 +1,14 @@
+.DS_Store
+config.json
+/dist
+node_modules
+app/components
+karma.conf.js
+karma-e2e.conf.js
+
+app/.htaccess
+.idea/
+*.iml
+.projectile
+app/js/app.js
+app/js/local.js

@@ -1,0 +1,73 @@
+@charset "UTF-8";
+/* CSS Document */
+@warningColor : #dd4b39;
+
+/* START: Form validation */
+.bgForm {
+  .ng-invalid {
+    border: 1px solid @warningColor;
+  }
+  .ng-invalid:focus {
+    border: 1px solid #4d90fe;
+  }
+  .ng-pristine.ng-invalid {
+    border: 1px solid #dddddd;
+  }
+  .ng-dirty {}
+  .ng-valid {
+  }
+}
+/* END: Form validation */
+
+/* START: Directives */
+.loading {
+  font-size: 1.5em;
+  opacity: 0.6;
+  margin-left: 15px;
+}
+
+.no-result {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #999999;
+  font-weight: bold;
+  margin: 10px 15px;
+}
+
+.fullscreenStatic {
+  overflow: hidden;
+  .static {
+    position: static !important;
+
+    * {
+      position: static !important;
+    }
+  }
+}
+
+.fullscreen {
+  background-color: @backgroundColor;
+  position: absolute !important;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  top: 60px;
+  left: 0;
+  overflow-y: auto;
+}
+/* END: Directives */
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* START: Headroom */
+.headroom--pinned {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+}
+
+.headroom--unpinned {
+  display: none;
+}
+/* END: Headroom */

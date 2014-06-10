@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "uri": {
+    "base": "/",
+    "host": "/",
+    "api": "/api/"
+  },
+  "default": {
+    "displayCount" : 20,
+    "modalAnimateIn" : "fadeInRight",
+    "modalAnimateOut" : "fadeOutRight"
+  },
+  "version": "0.0.1"
+}
