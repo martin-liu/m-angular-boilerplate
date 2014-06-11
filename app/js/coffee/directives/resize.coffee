@@ -4,8 +4,8 @@ angular.module('m-directive').directive 'mResize', ($window) ->
     restric : 'A'
     scope : {}
     link : (scope, element, attrs) ->
-      w = angular.element $window
-      h = w.height()
+      w = $window
+      h = w.innerHeight
       rate = attrs.mResize
       isFixed = attrs.mResizeFixed
 
