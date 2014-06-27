@@ -27,8 +27,6 @@ App.run ($rootScope, $window, LoadingService, Util) ->
   promise = LoadingService.init()
   $rootScope.init = -> promise
 
-  $rootScope.window = $window
-
   $rootScope.Util = Util
 
   $rootScope.user = angular.fromJson localStorage.getItem 'user'

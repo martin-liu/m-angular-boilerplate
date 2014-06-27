@@ -19,7 +19,13 @@ angular.module('m-directive').directive 'mFullscreen', () ->
     link : (scope, element, attrs) ->
       toggleEl = findChild element, (d)->
         'm-fullscreen' == angular.element(d).attr 'data-toggle'
-      angular.element(toggleEl).bind 'click', ()->
-        angular.element(document.body).toggleClass 'fullscreenStatic'
-        element.toggleClass 'fullscreen'
+      if toggleEl
+        toggleEl = angular.element toggleEl
+        toggleEl.attr 'style', 'cursor:sw-resize'
+        toggleEl.bind 'click', ()->
+          angular.element(document.body).toggleClass 'fullscreenStatic'
+          element.toggleClass 'fullscreen'
+        # Prevent memory leak
+        scope.$on '$destroy', ->
+          toggleEl.unbind 'click'
   }
