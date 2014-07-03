@@ -11,6 +11,8 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
     request : (config) ->
       return config || $q.when(config)
     responseError : (response) ->
+      if !response.status       # need sso
+        window.location.reload()
       if response.data && response.data.message
         tplErrorHandler = 'partials/modal/error_handler.html'
         $rootScope.Util.createDialog tplErrorHandler
