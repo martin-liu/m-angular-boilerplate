@@ -1,9 +1,0 @@
-[
-  {
-    "url": "/",
-    "params": {
-      "templateUrl": "partials/home.html",
-      "controller": "HomeCtrl"
-    }
-  }
-]

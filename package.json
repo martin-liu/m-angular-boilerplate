@@ -1,11 +1,11 @@
 {
   "name": "base",
   "version": "0.0.1",
-  "description": "App",
+  "description": "OPS",
   "author": "opsins",
   "repository": {
     "type:": "git",
-      "url": "https://github.com/martin-liu/m-angular-boilerplate.git"
+    "url": "https://github.scm.corp.ebay.com/opsins/bg-client.git"
   },
   "devDependencies": {
     "grunt": "~0.4.x",
@@ -26,5 +26,9 @@
     "grunt-karma": "~0.3.x",
     "grunt-coffeelint": "0.0.7",
     "time-grunt": "~0.3.1"
+  },
+  "dependencies": {
+    "moment": "~2.7.0",
+    "grunt-cson": "~0.8.0"
   }
 }

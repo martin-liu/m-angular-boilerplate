@@ -1,5 +1,5 @@
 .DS_Store
-config.json
+config.cson
 /dist
 node_modules
 app/components
@@ -12,3 +12,4 @@ app/.htaccess
 .projectile
 app/js/app.js
 app/js/local.js
+app/*.json
