@@ -1,15 +1,14 @@
 'use strict'
-App.factory 'PiwikService', ->
+App.factory 'PiwikService', (Config)->
   return {
   init : (username) ->
     if Piwik?
-      if "https:" == document.location.protocol
-        protocol = "https"
-      else
-        protocol = "http"
-      pkBaseURL = protocol + "://opspiwik.corp.ebay.com/piwik/"
-      piwikTracker = Piwik.getTracker "#{pkBaseURL}/piwik.php", 1
+      siteId = Config.piwik.siteId
+      pkBaseURL = Config.piwik.url
+      app = Config.piwik.app
+      piwikTracker = Piwik.getTracker "#{pkBaseURL}/piwik.php", siteId
       piwikTracker.setCustomVariable 1, "User", username, "visit"
+      piwikTracker.setCustomVariable 2, "App", app, "page"
       piwikTracker.trackPageView()
       piwikTracker.enableLinkTracking()
   }

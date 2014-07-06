@@ -1,3 +1,4 @@
+#
 # This module loads the configuration and routes files,
 # as well as bootstraps the application. At
 # runtime it adds uri based on application location.
@@ -56,6 +57,10 @@ window.onload = ->
       property: "routes"
       file: "routes.json"
     }
+    {
+      property: "intro"
+      file: "intro.json"
+    }
   ]
   loaded = 0
 
@@ -91,7 +96,7 @@ window.onload = ->
           Config[item] = JSON.parse loader.responseText
 
         # We've loaded all dependencies, lets bootstrap the application.
-        if loaded is files.length
+        if item == 'routes'
 
           # Declare error if we are missing a name.
           if angular.isUndefined(Config.name)

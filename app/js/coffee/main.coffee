@@ -21,7 +21,7 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
       else
         response
 
-App.run ($rootScope, $window, LoadingService, Util) ->
+App.run ($rootScope, $window, LoadingService, IntroService, Util) ->
 
   $rootScope.$on '$routeChangeSuccess', ($event, current) ->
     $rootScope.currentPage = current.name
@@ -40,7 +40,8 @@ App.run ($rootScope, $window, LoadingService, Util) ->
       ret
   }
 
-  sessionStorage.clear()
+  $rootScope.startIntro = ->
+    IntroService.start()
 
 App.constant 'Config', Config
 App.constant 'Cache', locache

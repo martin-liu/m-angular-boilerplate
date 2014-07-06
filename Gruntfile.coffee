@@ -65,6 +65,7 @@ module.exports = (grunt) ->
               "fonts/*"
               "css/styles.min.css"
               "routes.cson"
+              "intro.cson"
             ]
             dest: "dist/"
             rename: (desc, src) ->
@@ -220,7 +221,11 @@ module.exports = (grunt) ->
     cson:
       dev:
         expand: true
-        src: ['app/config.cson', 'app/routes.cson' ]
+        src: [
+          'app/config.cson'
+          'app/routes.cson'
+          'app/intro.cson'
+        ]
         dest: ''
         ext: '.json'
       prod:

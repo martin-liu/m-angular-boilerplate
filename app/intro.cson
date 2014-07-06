@@ -1,0 +1,10 @@
+[
+  {
+    intro: "Hello World"
+    position: 'right'
+  }
+  {
+    intro: "Hello "
+    position: 'bottom'
+  }
+]
