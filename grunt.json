@@ -19,6 +19,7 @@
                 "app/components/locache/build/locache.min.js",
                 "app/components/headroom.js/dist/headroom.min.js",
                 "app/components/headroom.js/dist/angular.headroom.min.js",
+                "app/components/intro.js/minified/intro.min.js",
                 "tmp/js/scripts.js"
             ],
             "dest": "tmp/js/scripts.min.js"
@@ -28,6 +29,7 @@
                 "app/components/bootstrap/dist/css/bootstrap.min.css",
                 "app/components/font-awesome/css/font-awesome.min.css",
                 "app/components/animate.css/animate.min.css",
+                "app/components/intro.js/minified/introjs.min.css",
                 "tmp/css/styles.css"
             ],
             "dest": "tmp/css/styles.min.css"

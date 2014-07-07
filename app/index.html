@@ -36,7 +36,8 @@
     </head>
     <body ng-animate="{enter: 'animated fadeInX'}" ng-cloak style="overflow-x: hidden">
         <!-- HEADER -->
-        <div headroom class="navbar navbar-inverse navbar-fixed-top animated slideInDown">
+        <div headroom intro-step="2"
+             class="intro-step navbar navbar-inverse navbar-fixed-top animated slideInDown">
             <div class="navbar-inner">
                 <div class="container-fluid">
                     <a class="navbar-brand" style="color:#fff">
@@ -48,7 +49,7 @@
                                 <i class="fa fa-envelope fa-2x"></i></a>
                         </li>
                         <li>
-                            <a style="color: #999" href="" target="_blank">
+                            <a style="color: #999" href="" target="_blank" ng-click="startIntro()">
                                 <i class="fa fa-question-circle fa-2x"></i>
                             </a>
                         </li>

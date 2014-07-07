@@ -96,7 +96,7 @@ window.onload = ->
           Config[item] = JSON.parse loader.responseText
 
         # We've loaded all dependencies, lets bootstrap the application.
-        if item == 'routes'
+        if loaded is files.length
 
           # Declare error if we are missing a name.
           if angular.isUndefined(Config.name)

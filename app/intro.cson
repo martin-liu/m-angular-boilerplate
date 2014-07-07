@@ -1,10 +1,10 @@
 [
   {
-    intro: "Hello World"
-    position: 'right'
+    intro: "Hello World!"
+    position: 'bottom'
   }
   {
-    intro: "Hello "
+    intro: "This is the header"
     position: 'bottom'
   }
 ]
