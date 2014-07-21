@@ -1,6 +1,6 @@
 'use strict'
 window.App = angular.module 'app', ['m-directive', 'ngSanitize', 'ngRoute'
-, 'config', 'restangular', 'ui.bootstrap', 'headroom', 'ngProgress']
+, 'config', 'restangular', 'ui.bootstrap', 'headroom']
 
 App.config ($provide, $httpProvider, RestangularProvider) ->
   # Restangular base url
@@ -21,13 +21,10 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
       else
         response
 
-App.run ($rootScope, $window, LoadingService, IntroService, Util) ->
+App.run ($rootScope, $window, IntroService, Util) ->
 
   $rootScope.$on '$routeChangeSuccess', ($event, current) ->
     $rootScope.currentPage = current.name
-
-  promise = LoadingService.init()
-  $rootScope.init = -> promise
 
   $rootScope.Util = Util
 

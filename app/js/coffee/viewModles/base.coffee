@@ -1,5 +1,5 @@
 App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout
-, Config, LoadingService, IntroService, ngProgress) ->
+, Config, LoadingService, IntroService, NProgressService) ->
 
   class BaseViewModel
     constructor : (@scope)->
@@ -26,17 +26,13 @@ App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout
 
     pageInit : =>
       defer = $q.defer()
-      ngProgress.start()
-      $timeout(ngProgress.complete(), 1000);
+      NProgressService.start()
       @initialize().then =>
-        LoadingService.done()
-        ngProgress.complete()
-        @scope.init().then =>
-          # Intro
-          IntroService.init()
-          # Piwik
-          PiwikService.init @scope.user.nt
+        NProgressService.done()
+        # Intro
+        IntroService.init()
+        # Piwik
+        PiwikService.init @scope.user.nt
 
-          @scope.initializing = 100
-          defer.resolve()
+        defer.resolve()
       defer.promise

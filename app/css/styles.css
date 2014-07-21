@@ -56,6 +56,13 @@ body {
   display: none;
 }
 /* END: Headroom */
+.app {
+  margin-top: 60px;
+}
+#nprogress .bar {
+  height: 4px;
+  background: red;
+}
 
 @charset "UTF-8";
 /* CSS Document */
@@ -115,4 +122,11 @@ body {
   display: none;
 }
 /* END: Headroom */
+.app {
+  margin-top: 60px;
+}
+#nprogress .bar {
+  height: 4px;
+  background: red;
+}
 
