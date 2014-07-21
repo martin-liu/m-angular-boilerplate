@@ -1,6 +1,6 @@
 'use strict'
 window.App = angular.module 'app', ['m-directive', 'ngSanitize', 'ngRoute'
-, 'config', 'restangular', 'ui.bootstrap', 'headroom']
+, 'config', 'restangular', 'ui.bootstrap', 'headroom', 'ngProgress']
 
 App.config ($provide, $httpProvider, RestangularProvider) ->
   # Restangular base url
@@ -12,7 +12,7 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
       return config || $q.when(config)
     responseError : (response) ->
       if !response.status       # reload when no status code
-        window.location.reload()
+        document.location.reload()
       if response.data && response.data.message
         tplErrorHandler = 'partials/modal/error_handler.html'
         $rootScope.Util.createDialog tplErrorHandler

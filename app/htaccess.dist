@@ -18,8 +18,8 @@ RewriteRule ^api/(.*) http://127.0.0.1:1337/$1 [P,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/index.php
-RewriteRule (.*) index.php
+RewriteCond %{REQUEST_URI} !^/index.html
+RewriteRule (.*) index.html
 
 ###########################################
 

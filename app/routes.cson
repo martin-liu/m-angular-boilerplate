@@ -1,6 +1,7 @@
 [
     url: "/"
     params:
+      name: "home"
       templateUrl: "partials/home.html"
       controller: "HomeCtrl"
 ]

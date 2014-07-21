@@ -46,6 +46,8 @@ angular.module("config", [])
 # This runs when all code has loaded, and loads the config and
 # route json manifests, before bootstrapping angular.
 window.onload = ->
+  if window.unSupport
+    return
 
   # Files to load initially.
   files = [
