@@ -21,12 +21,14 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
       else
         response
 
-App.run ($rootScope, $window, IntroService, Util) ->
+App.run ($rootScope, $window, IntroService, Util, Config) ->
 
   $rootScope.$on '$routeChangeSuccess', ($event, current) ->
     $rootScope.currentPage = current.name
 
   $rootScope.Util = Util
+
+  $rootScope.config = Config
 
   $rootScope.user = angular.fromJson localStorage.getItem 'user'
 
