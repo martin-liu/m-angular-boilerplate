@@ -12,4 +12,5 @@ app/.htaccess
 .projectile
 app/js/app.js
 app/js/local.js
+app/css/styles.css
 app/*.json

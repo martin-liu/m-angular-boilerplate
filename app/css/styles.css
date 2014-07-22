@@ -59,6 +59,10 @@ body {
 .app {
   margin-top: 60px;
 }
+.navbar-brand img {
+  height: 45px;
+  margin-top: -11px;
+}
 #nprogress .bar {
   height: 4px;
   background: red;
@@ -124,6 +128,10 @@ body {
 /* END: Headroom */
 .app {
   margin-top: 60px;
+}
+.navbar-brand img {
+  height: 45px;
+  margin-top: -11px;
 }
 #nprogress .bar {
   height: 4px;
