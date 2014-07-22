@@ -59,13 +59,8 @@ body {
 .app {
   margin-top: 60px;
 }
-.navbar-brand img {
+.navbar-brand {
   height: 45px;
-  margin-top: -11px;
-}
-#nprogress .bar {
-  height: 4px;
-  background: red;
 }
 
 @charset "UTF-8";
@@ -129,12 +124,7 @@ body {
 .app {
   margin-top: 60px;
 }
-.navbar-brand img {
+.navbar-brand {
   height: 45px;
-  margin-top: -11px;
-}
-#nprogress .bar {
-  height: 4px;
-  background: red;
 }
 
