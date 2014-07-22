@@ -57,7 +57,7 @@ module.exports = (grunt) ->
             expand: true
             cwd: "tmp/"
             src: [
-              "index.php"
+              "index.*"
               "maintainance.html"
               "js/scripts.min.js"
               "js/json2.js"
@@ -115,7 +115,7 @@ module.exports = (grunt) ->
 
     htmlrefs:
       dist:
-        src: "tmp/index.php"
+        src: "tmp/index.*"
         dest: "tmp/"
 
       options:
@@ -165,7 +165,7 @@ module.exports = (grunt) ->
         ]
 
       manifest:
-        src: ["tmp/index.php"]
+        src: ["tmp/index.*"]
         actions: [
           name: "manifest"
           search: "<html>"
