@@ -93,6 +93,6 @@ RewriteRule (.*) index.html
 
 ###########################################
 # Rewrite rule for https
-RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+#RewriteCond %{HTTPS} off
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
 ###########################################
