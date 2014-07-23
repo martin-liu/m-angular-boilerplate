@@ -22,6 +22,8 @@ angular.module("config", [])
 
   # Loop over routes and add to router.
   angular.forEach Config.routes, (route) ->
+    if route.params && !route.params.controller
+      route.params.controller = 'BaseCtrl'
     $routeProvider.when route.url, route.params
     return
 
@@ -120,8 +122,8 @@ window.onload = ->
           # Register route controllers
           angular.forEach Config.routes, (route) ->
             ctrl = route.params.controller
-            if ctrl
-              registerController ctrl
+            ctrl ?= 'BaseCtrl'
+            registerController ctrl
 
           # Bootstrap the application.
           angular.bootstrap document, [Config.name]
