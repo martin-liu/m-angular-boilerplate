@@ -1,98 +1,98 @@
 <!doctype html>
 <html xmlns:ng="http://angularjs.org" xmlns:bg="ignored" id="ng-app">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <base href="/">
-        <title>OPS Platform</title>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <base href="/">
+    <title>OPS Platform</title>
 
-        <link rel="shortcut icon">
+    <link rel="shortcut icon">
 
-        <!-- ref:css css/styles.min.<%= buildNumber %>.css -->
-        <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css">
-        <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
-        <link rel="stylesheet" href="components/animate.css/animate.css">
-        <link rel="stylesheet" href="components/intro.js/introjs.css">
-        <link rel="stylesheet" href="components/nprogress/nprogress.css">
-        <link rel="stylesheet" href="css/styles.css">
-        <!-- endref -->
+    <!-- ref:css css/styles.min.<%= buildNumber %>.css -->
+    <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="components/animate.css/animate.css">
+    <link rel="stylesheet" href="components/intro.js/introjs.css">
+    <link rel="stylesheet" href="components/nprogress/nprogress.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- endref -->
 
-        <!-- This has to be at the top to make it works in IE   -->
-        <!--[if lte IE 8]>
-        <script src="js/json2.js"></script>
-        <script>
-        document.createElement('bg-loading');
-        document.createElement('bg-pagination');
-        document.createElement('bg-no-result');
-        document.createElement('bg-dynamic-tpl');
-        </script>
-        <![endif]-->
+    <!-- This has to be at the top to make it works in IE   -->
+    <!--[if lte IE 8]>
+    <script src="js/json2.js"></script>
+    <script>
+    document.createElement('bg-loading');
+    document.createElement('bg-pagination');
+    document.createElement('bg-no-result');
+    document.createElement('bg-dynamic-tpl');
+    </script>
+    <![endif]-->
 
-        <!--[if lte IE 7]>
-        <script type="text/javascript">
-        window.unSupport = true
-        document.write("<h1>Sorry, we don't support IE <=7</h1>");
-        </script>
-        <![endif]-->
+    <!--[if lte IE 7]>
+    <script type="text/javascript">
+    window.unSupport = true
+    document.write("<h1>Sorry, we don't support IE <=7</h1>");
+    </script>
+    <![endif]-->
 
-    </head>
-    <body ng-animate="{enter: 'animated fadeInX'}" ng-cloak style="overflow-x: hidden">
-        <!-- HEADER -->
-        <div headroom intro-step="2" style="min-height:45px"
-             class="intro-step navbar navbar-inverse navbar-fixed-top animated slideInDown">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    <a class="navbar-brand" style="color:#fff">
-                        Title
-                    </a>
-                    <div class="nav nav-pills pull-right" style="margin-right:20px">
-                        <li>
-                            <a style="color: #999" href="mailto:">
-                                <i class="fa fa-envelope"></i></a>
-                        </li>
-                        <li>
-                            <a style="color: #999" href="" target="_blank">
-                                <i class="fa fa-question-circle"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a style="color: #999" href="" target="_blank" ng-click="startIntro()">
-                              Tour
-                            </a>
-                        </li>
-                    </div>
-                </div>
-            </div>
+  </head>
+  <body ng-animate="{enter: 'animated fadeInX'}" ng-cloak style="overflow-x: hidden">
+    <!-- HEADER -->
+    <div headroom intro-step="2" style="min-height:45px"
+         class="intro-step navbar navbar-inverse navbar-fixed-top animated slideInDown">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color:#fff">
+            Title
+          </a>
+          <div class="nav nav-pills pull-right" style="margin-right:20px">
+            <li>
+              <a style="color: #999" href="mailto:">
+                <i class="fa fa-envelope"></i></a>
+            </li>
+            <li>
+              <a style="color: #999" href="" target="_blank">
+                <i class="fa fa-question-circle"></i>
+              </a>
+            </li>
+            <li>
+              <a style="color: #999" href="" target="_blank" ng-click="startIntro()">
+                Tour
+              </a>
+            </li>
+          </div>
         </div>
-        <!-- BODY -->
-        <div class="app" ng-view ng-animate="{enter: 'animated fadeIn'}"></div>
+      </div>
+    </div>
+    <!-- BODY -->
+    <div class="app animate-fade-left-big" ng-view></div>
 
-        <!-- ref:js js/scripts.min.<%= buildNumber %>.js -->
+    <!-- ref:js js/scripts.min.<%= buildNumber %>.js -->
 
-        <script src="components/angular/angular.js"></script>
-        <script src="components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="components/angular-route/angular-route.js"></script>
-        <script src="components/angular-bootstrap/ui-bootstrap.js"></script>
-        <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="components/lodash/dist/lodash.js"></script>
-        <script src="components/restangular/dist/restangular.js"></script>
-        <script src="components/locache/build/locache.js"></script>
+    <script src="components/angular/angular.js"></script>
+    <script src="components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="components/angular-route/angular-route.js"></script>
+    <script src="components/angular-animate/angular-animate.js"></script>
+    <script src="components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="components/lodash/dist/lodash.js"></script>
+    <script src="components/restangular/dist/restangular.js"></script>
+    <script src="components/locache/build/locache.js"></script>
 
-        <script src="components/headroom.js/dist/headroom.js"></script>
-        <script src="components/headroom.js/dist/angular.headroom.js"></script>
+    <script src="components/headroom.js/dist/headroom.js"></script>
+    <script src="components/headroom.js/dist/angular.headroom.js"></script>
 
-        <script src="components/intro.js/intro.js"></script>
+    <script src="components/intro.js/intro.js"></script>
 
-        <script src="components/nprogress/nprogress.js"></script>
+    <script src="components/nprogress/nprogress.js"></script>
 
-        <script src="js/app.js"></script>
+    <script src="js/app.js"></script>
 
-        <!-- endref -->
-        <!-- ref:remove -->
-        <script src="js/local.js"></script>
-        <script src="components/less.js/dist/less-1.6.2.min.js"></script>
-        <script src="//localhost:35729/livereload.js"></script>
-        <!-- endref -->
+    <!-- endref -->
+    <!-- ref:remove -->
+    <script src="js/local.js"></script>
+    <script src="components/less.js/dist/less-1.6.2.min.js"></script>
+    <script src="//localhost:35729/livereload.js"></script>
+    <!-- endref -->
 
-    </body>
+  </body>
 </html>

@@ -12,7 +12,7 @@
                 "app/components/angular/angular.min.js",
                 "app/components/angular-sanitize/angular-sanitize.min.js",
                 "app/components/angular-route/angular-route.min.js",
-                "app/components/angular-bootstrap/ui-bootstrap.min.js",
+                "app/components/angular-animate/angular-animate.js",
                 "app/components/angular-bootstrap/ui-bootstrap-tpls.min.js",
                 "app/components/lodash/dist/lodash.min.js",
                 "app/components/restangular/dist/restangular.min.js",
