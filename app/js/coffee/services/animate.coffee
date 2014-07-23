@@ -107,15 +107,16 @@ App.factory("animateCSSBuild", [
 ]).animation(".animate-fade-down-big", [
   "animateCSSBuild"
   (animateCSSBuild) ->
-    return animateCSSBuild("animate-fade-down-big", "fadeInDownBig", "fadeOutDownBig")
+    animateCSSBuild("animate-fade-down-big", "fadeInDownBig", "fadeOutDownBig")
 ]).animation(".animate-fade-left-big", [
   "animateCSSBuild"
   (animateCSSBuild) ->
-    return animateCSSBuild("animate-fade-left-big", "fadeInLeftBig", "fadeOutLeftBig")
+    animateCSSBuild("animate-fade-left-big", "fadeInLeftBig", "fadeOutLeftBig")
 ]).animation(".animate-fade-right-big", [
   "animateCSSBuild"
   (animateCSSBuild) ->
-    return animateCSSBuild("animate-fade-right-big", "fadeInRightBig", "fadeOutRightBig")
+    animateCSSBuild "animate-fade-right-big"
+    , "fadeInRightBig", "fadeOutRightBig"
 ]).animation(".animate-bounce", [
   "animateCSSBuild"
   (animateCSSBuild) ->
@@ -127,15 +128,15 @@ App.factory("animateCSSBuild", [
 ]).animation(".animate-bounce-down", [
   "animateCSSBuild"
   (animateCSSBuild) ->
-    return animateCSSBuild("animate-bounce-down", "bounceInDown", "bounceOutDown")
+    animateCSSBuild("animate-bounce-down", "bounceInDown", "bounceOutDown")
 ]).animation(".animate-bounce-left", [
   "animateCSSBuild"
   (animateCSSBuild) ->
-    return animateCSSBuild("animate-bounce-left", "bounceInLeft", "bounceOutLeft")
+    animateCSSBuild("animate-bounce-left", "bounceInLeft", "bounceOutLeft")
 ]).animation(".animate-bounce-right", [
   "animateCSSBuild"
   (animateCSSBuild) ->
-    return animateCSSBuild("animate-bounce-right", "bounceInRight", "bounceOutRight")
+    animateCSSBuild("animate-bounce-right", "bounceInRight", "bounceOutRight")
 ]).animation(".animate-rotate", [
   "animateCSSBuild"
   (animateCSSBuild) ->
@@ -163,7 +164,7 @@ App.factory("animateCSSBuild", [
 ]).animation(".animate-lightspeed", [
   "animateCSSBuild"
   (animateCSSBuild) ->
-    return animateCSSBuild("animate-lightspeed", "lightSpeedIn", "lightSpeedOut")
+    animateCSSBuild("animate-lightspeed", "lightSpeedIn", "lightSpeedOut")
 ]).animation(".animate-roll", [
   "animateCSSBuild"
   (animateCSSBuild) ->
