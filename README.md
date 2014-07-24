@@ -10,6 +10,7 @@
   * `git pull bp master`
   * `sudo npm -g install grunt-cli karma bower`
   * `npm install && bower install && grunt init`
+
 ## Development
   * Run `grunt dev`, this will start a static server on http://localhost:8000, and also run watch tasks. You can run `grunt watch` only if the directory is already under a web server
 
@@ -47,10 +48,19 @@
 ├── karma.unit.conf.js
 └── package.json
 ```
-### Functionality
+### Highlight
 * Static file server for quick development
 * Dev/test/build process
-* CacheBust
+* CacheBust, minify, uglify
 * Livereload
 * Animation
-* Inheritance
+* Modular && Inheritance support
+* Resueable UI functions/components
+* Local cache, persistence
+* Global error handler
+* Unify jenkins build
+
+### Details
+* `routes.cson` && viewmodels
+* nprogress
+* intro.js && `intro.cson`
