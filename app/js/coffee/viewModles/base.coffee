@@ -32,7 +32,8 @@ App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout
         # Intro
         IntroService.init()
         # Piwik
-        PiwikService.init @scope.user.nt
+        if @scope.user
+          PiwikService.init @scope.user.nt
 
         defer.resolve()
       defer.promise
