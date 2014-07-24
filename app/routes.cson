@@ -1,7 +1,15 @@
 [
+  {
     url: "/"
     params:
       name: "home"
       templateUrl: "partials/home.html"
       controller: "HomeCtrl"
+  }
+  {
+    url: "/about"
+    params:
+      name: "about"
+      templateUrl: "partials/about.html"
+  }
 ]

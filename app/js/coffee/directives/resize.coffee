@@ -1,7 +1,7 @@
 # The directive for no result style
 angular.module('m-directive').directive 'mResize', ($window) ->
   return {
-    restric : 'A'
+    restrict : 'A'
     scope : {}
     link : (scope, element, attrs) ->
       w = $window

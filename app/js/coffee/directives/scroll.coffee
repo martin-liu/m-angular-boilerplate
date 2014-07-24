@@ -1,6 +1,6 @@
 # The directive for process scroll
 angular.module('m-directive').directive 'mScroll',  ->
-  restric : 'A'
+  restrict : 'A'
   link : (scope, el, attrs) ->
     scrollFunc = attrs.scroll
     scrollBottomFunc = attrs.scrollBottom

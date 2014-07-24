@@ -45,6 +45,14 @@
           <a class="navbar-brand" style="color:#fff">
             Title
           </a>
+          <ul class="nav navbar-nav">
+            <li class="float-shadow"
+                ng-class="{active: currentPage == route.params.name}"
+                ng-click="Util.redirect(route.url)"
+                ng-repeat="route in config.routes">
+              <a href="">{{route.params.name}}</a>
+            </li>
+          </ul>
           <div class="nav nav-pills pull-right" style="margin-right:20px">
             <li>
               <a style="color: #999" href="mailto:">

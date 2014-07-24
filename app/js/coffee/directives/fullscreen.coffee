@@ -14,7 +14,7 @@ angular.module('m-directive').directive 'mFullscreen', () ->
           return find
 
   return {
-    restric : 'A'
+    restrict : 'A'
     scope : {}
     link : (scope, element, attrs) ->
       toggleEl = findChild element, (d)->

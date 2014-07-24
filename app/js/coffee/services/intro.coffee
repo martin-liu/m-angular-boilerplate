@@ -28,8 +28,7 @@ App.factory 'IntroService', (Config, Cache, $timeout)->
       start = @start
       $timeout ->
         if start()
-          if not Config.debug
-            Cache.set 'IntroService_init', true
+          Cache.set 'IntroService_init', true
       , 1500
 
   start: ->

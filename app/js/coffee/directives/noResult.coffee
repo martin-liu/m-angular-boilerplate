@@ -1,7 +1,7 @@
 # The directive for no result style
 angular.module('m-directive').directive 'mNoResult', () ->
   return {
-    restric : 'E'
+    restrict : 'E'
     scope : {}
     template : """
                <div class="no-result">
