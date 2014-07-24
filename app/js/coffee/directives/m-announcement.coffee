@@ -14,13 +14,14 @@ angular.module('m-directive').directive 'mAnnouncement', ($position) ->
                 <h3 class="popover-title" ng-bind="title" ng-show="title"></h3>
                 <div class="popover-content">
                   <alert ng-repeat="a in announcements"
-                    type="{{a.type || 'success'}}">
+                    type="{{a.type || 'success'}}"
+                    style="margin:3px;padding:2px">
                     <p>
-                      <span class="label label-primary"
+                      <div class="label label-primary"
                         style="margin-right:5px">
                         {{a.date | date:'yyyy-MM-dd HH:mm:ss'}}
-                      </span>
-                      {{a.msg}}
+                      </div>
+                      <div style="margin-left:5px">{{a.msg}}</div>
                     </p>
                   </alert>
                 </div>
