@@ -237,6 +237,8 @@ module.exports = (grunt) ->
       config:
         files: ["app/**/*.cson"]
         tasks: ["cson:dev"]
+        options:
+          atBegin: true
       scripts:
         files: [
           "app/js/coffee/**/*.coffee"
@@ -247,11 +249,14 @@ module.exports = (grunt) ->
           "coffeelint"
         ]
         options:
-          debounceDelay: 100
+          debounceDelay: 300
+          atBegin: true
 
       styles:
         files: ["app/css/less/**/*.less"]
         tasks: ["less:dev"]
+        options:
+          atBegin: true
 
       livereload:
         options:
