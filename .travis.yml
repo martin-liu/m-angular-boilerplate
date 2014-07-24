@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - "0.10"
+before_script:
+  - npm install -g grunt-cli
+  - npm install -g bower
+  - bower install
+script: npm run-script deploy
+env:
+ global:
+ - GH_REF: github.com/martin-liu/m-angular-boilerplate.git
+ - secure: Btg4GID5TN68S4sqLRGVFs59+DfCQhPiAFb3vJDgvWcbTW0HnSsXUwwvQoZiib7fTsRJCUDBubRiEGoU3zc9p7+pwtxv+l/CT5h+9p2aQQ20GF8kzgnQDn79OoHpckYS2iTKvrc/vwbiLPZeQtZ7rqWcEK/ESMMgzcVnZwixCKw=
