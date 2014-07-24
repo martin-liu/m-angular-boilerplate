@@ -26,6 +26,19 @@ App.run ($rootScope, $window, IntroService, Util, Config) ->
   $rootScope.$on '$routeChangeSuccess', ($event, current) ->
     $rootScope.currentPage = current.name
 
+    # Watch config to persist it in local storage
+    $rootScope.$watch =>
+      # use angular.toJson to remove internal properties like $$hashKey
+      angular.toJson $rootScope.state.config
+    , (newVal, oldVal) =>
+      key = 'OpsViewmodel_Config'
+      if newVal == oldVal     # initial
+        _.extend @state.config, Cache.get key
+        @initConfig()
+      else
+        Cache.set key, JSON.parse newVal
+    , true                    # equal
+
   $rootScope.Util = Util
 
   $rootScope.config = Config

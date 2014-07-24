@@ -43,6 +43,28 @@ module.exports = (grunt) ->
       css: "<%= config.concat.css %>"
 
     copy:
+      init:
+        files: [
+          {
+            expand: true
+            cwd: 'app/'
+            src: ['config.cson.dist', 'htaccess.dist']
+            dest: 'app/'
+            rename: (dest, src) ->
+              if src == 'htaccess.dist'
+                dest + '.htaccess'
+              else
+                dest + 'config.cson'
+          }
+          {
+            expand: true
+            cwd: 'app/js/'
+            src: ['local.js.dist']
+            dest: 'app/js/'
+            rename: (dest, src) ->
+              dest + 'local.js'
+          }
+        ]
       tmp:
         files: [
           expand: true
@@ -68,8 +90,8 @@ module.exports = (grunt) ->
               "intro.cson"
             ]
             dest: "dist/"
-            rename: (desc, src) ->
-              desc + src.replace("min.", "min.<%= buildNumber %>.")
+            rename: (dest, src) ->
+              dest + src.replace("min.", "min.<%= buildNumber %>.")
           }
           {
             expand: true
@@ -290,10 +312,15 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-coffeelint"
   grunt.loadNpmTasks "grunt-cson"
 
+  grunt.registerTask "init", [
+    "copy:init"
+  ]
+
   grunt.registerTask "test", [
     "coffeelint"
     "lesslint"
   ]
+
   grunt.registerTask "build", [
     #    'test',
     "clean:build"
