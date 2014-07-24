@@ -291,7 +291,19 @@ module.exports = (grunt) ->
           "app/index.*"
           "app/partials/**/*.html"
         ]
-
+    # Static file server
+    connect:
+      server:
+        options:
+          port: 8000
+          base: 'app'
+          keepalive: true
+    # Concurrent tasks
+    concurrent:
+      dev:
+        tasks: ['connect', 'watch']
+        options:
+          logConcurrentOutput: true
 
   # Additional task plugins
   grunt.loadNpmTasks "grunt-contrib-watch"
@@ -301,6 +313,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-contrib-less"
   grunt.loadNpmTasks "grunt-contrib-copy"
   grunt.loadNpmTasks "grunt-contrib-clean"
+  grunt.loadNpmTasks "grunt-contrib-connect"
   grunt.loadNpmTasks "grunt-conventional-changelog"
   grunt.loadNpmTasks "grunt-bump"
   grunt.loadNpmTasks "grunt-html2js"
@@ -311,9 +324,14 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-karma"
   grunt.loadNpmTasks "grunt-coffeelint"
   grunt.loadNpmTasks "grunt-cson"
+  grunt.loadNpmTasks "grunt-concurrent"
 
   grunt.registerTask "init", [
     "copy:init"
+  ]
+
+  grunt.registerTask "dev", [
+    "concurrent:dev"
   ]
 
   grunt.registerTask "test", [

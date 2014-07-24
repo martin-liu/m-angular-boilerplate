@@ -21,23 +21,23 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
       else
         response
 
-App.run ($rootScope, $window, IntroService, Util, Config) ->
+App.run ($rootScope, $window, IntroService, Util, Config, Cache) ->
 
   $rootScope.$on '$routeChangeSuccess', ($event, current) ->
     $rootScope.currentPage = current.name
 
-    # Watch config to persist it in local storage
-    $rootScope.$watch =>
-      # use angular.toJson to remove internal properties like $$hashKey
-      angular.toJson $rootScope.state.config
-    , (newVal, oldVal) =>
-      key = 'OpsViewmodel_Config'
-      if newVal == oldVal     # initial
-        _.extend @state.config, Cache.get key
-        @initConfig()
-      else
-        Cache.set key, JSON.parse newVal
-    , true                    # equal
+  # Watch to persist object in local storage
+  $rootScope.$watch =>
+    # use angular.toJson to remove internal properties like $$hashKey
+    angular.toJson $rootScope.persistence
+  , (newVal, oldVal) =>
+    key = 'persistent_object'
+    if newVal == oldVal     # initial
+      $rootScope.persistence = {}
+      _.extend $rootScope.persistence, Cache.get key
+    else
+      Cache.set key, JSON.parse newVal
+  , true                    # equal
 
   $rootScope.Util = Util
 
