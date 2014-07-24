@@ -59,6 +59,12 @@
 * Local cache, persistence
 * Global error handler
 * Unify jenkins build
+* Travis build && auto push to github pages
+  - Go to GitHub.com -> Settings -> Applications -> Personal Access Tokens — > Create new token, and copy it to your clipboard
+  - In `.travis.yml` file, Change `GH_REF` value to your repository
+  - `npm install travis-encrypt -g`
+  - `travis-encrypt -r [repository slug] GH_TOKEN=[the token you created before]`, repository slug is for example `martin-liu/m-angular-boilerplate`
+  - copy the long encrypt string to `.travis.yml`
 
 ### Details
 * `routes.cson` && viewmodels
