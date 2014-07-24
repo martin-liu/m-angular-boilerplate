@@ -1,6 +1,7 @@
 App.factory("animateCSSBuild", [
   "$timeout"
   ($timeout) ->
+    defaultDelay = 500
     return (baseClass, classNames) ->
       if arguments.length is 3
         a = classNames
@@ -17,7 +18,7 @@ App.factory("animateCSSBuild", [
       animateCSSStart = (element, className, delay, done) ->
         element.addClass className
         element.addClass "animated"
-        timer = $timeout(done, delay or 300, false)
+        timer = $timeout(done, delay or defaultDelay, false)
         element.data timeoutKey, timer
         return
 
