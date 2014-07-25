@@ -12,7 +12,8 @@
   * `npm install && bower install && grunt init`
 
 ### For Windows
-  You must install msysgit correctly, and run `bower install` from the Windows Command Prompt. This is the limitation of Bower only
+  * You must install msysgit correctly, and run `bower install` from the Windows Command Prompt. This is the limitation of Bower only
+  * You can use `git config --global url."https://".insteadOf git://` to solve possible network issue
 
 ## Development
   * Run `grunt dev`, this will start a static server on http://localhost:8000, and also run watch tasks. You can run `grunt watch` only if the directory is already under a web server
