@@ -6,6 +6,7 @@ module.exports = (grunt) ->
   grunt.config.init
     buildEnv: grunt.option("buildEnv") or "prod"
     buildNumber: grunt.option("buildNumber") or "0"
+    repoName: grunt.option("repoName")
     pkg: grunt.file.readJSON("package.json")
     config: grunt.file.readJSON("grunt.json")
     bump:
@@ -201,6 +202,14 @@ module.exports = (grunt) ->
           search: /app\',\s\[/
           replace: "app', ['templates',"
           flags: "gmi"
+        ]
+
+      travis:
+        src: ['dist/index.html']
+        actions: [
+          name: "travis"
+          search: /<base href="\/">/
+          replace: '<base <%= repoName %> href="\/<%= repoName %>\/">'
         ]
 
     uglify:
