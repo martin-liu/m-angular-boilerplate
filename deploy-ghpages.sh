@@ -1,9 +1,12 @@
 #!/bin/bash
 grunt build
 ( cd dist
+  echo ...${GH_REF}
+  echo ...${GH_REF##*/}
   REPO=`echo ${GH_REF##*/} | cut -d'.' -f 1`
+  echo ...${REPO}
   sed -i 's#<base href="/">#<base href="/${REPO}/">#' index.html
-  git init
+  Git init
   git config user.name "Travis-CI"
   git config user.email "travis@martin-liu.com"
   git add .
