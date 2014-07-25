@@ -1,7 +1,7 @@
 #!/bin/bash
 grunt build
 ( cd dist
-  REPO=`echo ${GH_REF##*/}o | cut -d'.' -f 1`
+  export REPO=`echo ${GH_REF##*/}o | cut -d'.' -f 1`
   sed -i "s#<base href=\"/\">#<base href=\"/${REPO}/\">#g" index.html
   git init
   git config user.name "Travis-CI"
