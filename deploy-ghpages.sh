@@ -1,5 +1,5 @@
 #!/bin/bash
-grunt build
+grunt build --buildNumber=${TRAVIS_COMMIT}
 ( cd dist
   REPO=`echo ${GH_REF##*/}o | cut -d'.' -f 1`
   sed -i "s#<base href=\"/\">#<base href=\"/${REPO}/\">#g" index.html
