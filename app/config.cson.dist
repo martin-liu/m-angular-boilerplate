@@ -16,6 +16,6 @@ piwik:
   siteId: 0
 
 intro:
-  enabled: true
+  enabled: false
 
 version: "0.0.1"
