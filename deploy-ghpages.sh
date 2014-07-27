@@ -1,8 +1,8 @@
 #!/bin/bash
 grunt build --buildNumber=${TRAVIS_COMMIT}
 ( cd dist
-  REPO=`echo ${GH_REF##*/}o | cut -d'.' -f 1`
-  sed -i "s#<base href=\"/\">#<base href=\"/${REPO}/\">#g" index.html
+  REPO=`echo ${GH_REF##*/} | cut -d'.' -f 1`
+  grunt regex-replace:travis --repoName=${REPO}
   git init
   git config user.name "Travis-CI"
   git config user.email "travis@martin-liu.com"

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <base href="">
+    <base href="/">
     <title>Title</title>
 
     <link rel="shortcut icon">
@@ -50,7 +50,7 @@
                 ng-class="{active: currentPage == route.params.name}"
                 ng-click="Util.redirect(route.url)"
                 ng-repeat="route in config.routes">
-              <a href="">{{route.params.name}}</a>
+              <a href="">{{route.params.label}}</a>
             </li>
           </ul>
           <div class="nav nav-pills pull-right" style="margin-right:20px">
@@ -72,6 +72,13 @@
         </div>
       </div>
     </div>
+
+    <ol class="ab-nav breadcrumb" style="margin-top: 80px;">
+      <li ng-repeat="breadcrumb in breadcrumbs.get() track by breadcrumb.path" ng-class="{ active: $last }">
+        <a ng-if="!$last" ng-href="{{ breadcrumb.path }}" ng-bind="breadcrumb.label" class="margin-right-xs"></a>
+        <span ng-if="$last" ng-bind="breadcrumb.label"></span>
+      </li>
+    </ol>
     <!-- BODY -->
     <div class="app animate-fade-left-big" ng-view></div>
 
