@@ -1,5 +1,5 @@
-App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout
-, Config, LoadingService, IntroService, NProgressService) ->
+App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout,
+AppInitService, Config, LoadingService, IntroService, NProgressService) ->
 
   class BaseViewModel
     constructor : (@scope)->
@@ -8,9 +8,10 @@ App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout
       @actions = @bindAction()
 
       # Bind viewModel to view after page init
-      @pageInit().then @bindView
-      if Config.debug == true
-        window.scope = @scope
+      AppInitService.done().then =>
+        @pageInit().then @bindView
+        if Config.debug == true
+          window.scope = @scope
 
     initialize : =>
       defer = $q.defer()
@@ -32,7 +33,7 @@ App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout
         # Intro
         IntroService.init()
         # Piwik
-        if @scope.user
+        if Config.piwik.enabled && @scope.user
           PiwikService.init @scope.user.nt
 
         defer.resolve()

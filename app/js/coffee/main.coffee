@@ -21,40 +21,8 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
       else
         response
 
-App.run ($rootScope, $window, IntroService, Util,
-Config, Cache) ->
-
-  $rootScope.$on '$routeChangeSuccess', ($event, current) ->
-    $rootScope.currentPage = current.name
-
-  # Watch to persist object in local storage
-  $rootScope.$watch =>
-    # use angular.toJson to remove internal properties like $$hashKey
-    angular.toJson $rootScope.persistence
-  , (newVal, oldVal) =>
-    key = 'persistent_object'
-    if newVal == oldVal     # initial
-      $rootScope.persistence = {}
-      _.extend $rootScope.persistence, Cache.get key
-    else
-      Cache.set key, JSON.parse newVal
-  , true                    # equal
-
-  $rootScope.Util = Util
-
-  $rootScope.config = Config
-
-  $rootScope.user = angular.fromJson localStorage.getItem 'user'
-
-  $rootScope.dict = {
-    get : (key) ->
-      ret = Constant.dict[key]
-      ret ?= key
-      ret
-  }
-
-  $rootScope.startIntro = ->
-    IntroService.start()
+App.run (AppInitService) ->
+  AppInitService.init()
 
 App.constant 'Config', Config
 App.constant 'Cache', locache

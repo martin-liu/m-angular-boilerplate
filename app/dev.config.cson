@@ -10,8 +10,9 @@ default:
   modalAnimateOut: "fadeOutRight"
 
 piwik:
+  enabled: false
   app: 'appName'
-  url: 'https://opspiwik.corp.ebay.com/piwik/'
+  url: ''
   siteId: 0
 
 version: "0.0.1"
