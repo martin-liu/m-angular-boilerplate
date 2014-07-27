@@ -22,7 +22,7 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
         response
 
 App.run ($rootScope, $window, IntroService, Util,
-Config, Cache, breadcrumbs) ->
+Config, Cache) ->
 
   $rootScope.$on '$routeChangeSuccess', ($event, current) ->
     $rootScope.currentPage = current.name
@@ -45,8 +45,6 @@ Config, Cache, breadcrumbs) ->
   $rootScope.config = Config
 
   $rootScope.user = angular.fromJson localStorage.getItem 'user'
-
-  $rootScope.breadcrumbs = breadcrumbs
 
   $rootScope.dict = {
     get : (key) ->

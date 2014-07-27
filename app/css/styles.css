@@ -113,6 +113,9 @@ body {
 .navbar-brand {
   height: 45px;
 }
+.breadcrumb {
+  margin-top: 80px;
+}
 
 @charset "UTF-8";
 /* CSS Document */
@@ -228,5 +231,8 @@ body {
 }
 .navbar-brand {
   height: 45px;
+}
+.breadcrumb {
+  margin-top: 80px;
 }
 
