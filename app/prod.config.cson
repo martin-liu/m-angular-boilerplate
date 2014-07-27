@@ -16,4 +16,7 @@ piwik:
   url: ''
   siteId: 0
 
+intro:
+  enabled: true
+
 version: "0.0.1"

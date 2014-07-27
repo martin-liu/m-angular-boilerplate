@@ -3,7 +3,7 @@ App.factory 'IntroService', (Config, Cache, $timeout)->
   intro = null
   initIntro = ->
     if introJs?
-      steps = Config.intro
+      steps = Config.intros
 
       els = document.querySelectorAll('.intro-step')
       steps = _.map steps, (step, i)->

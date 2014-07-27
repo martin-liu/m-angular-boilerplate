@@ -31,7 +31,8 @@ AppInitService, Config, LoadingService, IntroService, NProgressService) ->
       @initialize().then =>
         NProgressService.done()
         # Intro
-        IntroService.init()
+        if Config.intro.enabled
+          IntroService.init()
         # Piwik
         if Config.piwik.enabled && @scope.user
           PiwikService.init @scope.user.nt

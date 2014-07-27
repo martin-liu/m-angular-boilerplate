@@ -62,7 +62,7 @@ window.onload = ->
       file: "routes.json"
     }
     {
-      property: "intro"
+      property: "intros"
       file: "intro.json"
     }
   ]
