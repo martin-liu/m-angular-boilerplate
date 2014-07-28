@@ -1,4 +1,26 @@
-# The directive for fullscreen a element
+###*
+  @ngdoc directive
+  @name m-directive.directive:mFullscreen
+  @element div
+  @restrict A
+  @description This directive is used to toggle fullscreen on an element
+  @example
+    <example module="eg">
+    <file name="index.js">
+      angular.module('eg',['m-directive'])
+        .controller('EgCtrl', ['$scope', function($scope){
+        }]);
+    </file>
+    <file name="index.html">
+      <div ng-controller="EgCtrl">
+        <div m-fullscreen style="border: solid 1px">
+          <button class="btn btn-primary"
+            type="button" data-toggle="m-fullscreen"></button>
+        </div>
+      </div>
+    </file>
+    </example>
+###
 angular.module('m-directive').directive 'mFullscreen', () ->
   findChild = (el, func)->
     el = angular.element el

@@ -19,7 +19,16 @@ RewriteRule ^api/(.*) http://127.0.0.1:1337/$1 [P,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/index.html
+RewriteCond %{REQUEST_URI} !^/docs/.*$
 RewriteRule (.*) index.html
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} ^/docs/.*$
+RewriteCond %{REQUEST_URI} !^/docs/index.html
+RewriteRule (.*) docs/index.html
+
+RewriteRule ^/docs/(.*).json$ /$1.json
 
 ###########################################
 

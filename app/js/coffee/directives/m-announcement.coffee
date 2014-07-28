@@ -1,4 +1,27 @@
-# The directive for announcement
+###*
+ @ngdoc directive
+ @name m-directive.directive:mAnnoucement
+ @element div
+ @restrict AE
+ @description This directive is used to create `annoucements`,
+ @example
+  <example module="eg">
+    <file name="index.js">
+      angular.module('eg',['ui.bootstrap', 'm-directive'])
+        .controller('EgCtrl', ['$scope', function($scope){
+          $scope.anns = [{
+            date: "2014-01-01",
+            msg: "this is a test"
+          }];
+        }]);
+    </file>
+    <file name="index.html">
+      <div ng-controller="EgCtrl">
+        <m-announcement announcements="anns"></m-announcement>
+      </div>
+    </file>
+  </example>
+###
 angular.module('m-directive').directive 'mAnnouncement', ($position) ->
   restrict : 'AE'
   scope:

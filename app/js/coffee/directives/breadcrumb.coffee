@@ -1,4 +1,24 @@
-# The directive for loading style
+###*
+ @ngdoc directive
+ @name m-directive.directive:mBreadcrumb
+ @element div
+ @restrict AE
+ @description This directive is used to create breadcrumbs
+ @example
+    <example module="eg">
+    <file name="index.js">
+      angular.module('eg',['m-directive'])
+        .controller('EgCtrl', function($scope, breadcrumbs){
+          $scope.breadcrumbs = breadcrumbs;
+        });
+    </file>
+    <file name="index.html">
+      <div ng-controller="EgCtrl">
+        <m-breadcrumb></m-breadcrumb>
+      </div>
+    </file>
+    </example>
+###
 angular.module('m-directive').directive 'mBreadcrumb',  ->
   restrict : 'AE'
   scope: {}

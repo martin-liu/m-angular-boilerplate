@@ -278,6 +278,7 @@ module.exports = (grunt) ->
         tasks: [
           "coffee"
           "coffeelint"
+          "ngdocs"
         ]
         options:
           debounceDelay: 300
@@ -314,6 +315,13 @@ module.exports = (grunt) ->
         options:
           logConcurrentOutput: true
 
+    ngdocs:
+      options:
+        dest: 'app/docs'
+        scripts: ['dist/js/scripts.min.0.js']
+        styles: ['dist/css/styles.min.0.css']
+      all: ['app/js/app.js']
+
   # Additional task plugins
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-coffee"
@@ -334,6 +342,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-coffeelint"
   grunt.loadNpmTasks "grunt-cson"
   grunt.loadNpmTasks "grunt-concurrent"
+  grunt.loadNpmTasks "grunt-ngdocs"
 
   grunt.registerTask "init", [
     "copy:init"

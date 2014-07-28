@@ -1,6 +1,10 @@
 'use strict'
-window.App = angular.module 'app', ['m-directive', 'ngSanitize', 'ngRoute'
-, 'ngAnimate', 'config', 'restangular', 'ui.bootstrap', 'headroom']
+window.App = angular.module 'app', ['ngSanitize', 'ngRoute', 'ngAnimate'
+, 'restangular', 'ui.bootstrap', 'headroom'
+, 'config', 'm-directive', 'm-service']
+
+angular.module 'm-service', ['m-util']
+angular.module 'm-directive', ['m-util']
 
 App.config ($provide, $httpProvider, RestangularProvider) ->
   # Restangular base url
