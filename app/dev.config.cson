@@ -12,6 +12,7 @@ default:
 piwik:
   enabled: false
   app: 'appName'
+  prod: 'prodName'
   url: ''
   siteId: 0
 

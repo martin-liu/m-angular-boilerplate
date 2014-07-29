@@ -1,4 +1,4 @@
-App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout,
+App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout, $rootScope,
 AppInitService, Config, LoadingService, IntroService, NProgressService) ->
 
   class BaseViewModel
@@ -35,7 +35,7 @@ AppInitService, Config, LoadingService, IntroService, NProgressService) ->
           IntroService.init()
         # Piwik
         if Config.piwik.enabled && @scope.user
-          PiwikService.init @scope.user.nt
+          PiwikService.init @scope.user.nt, $rootScope.currentPage
 
         defer.resolve()
       defer.promise

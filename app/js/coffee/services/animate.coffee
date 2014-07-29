@@ -104,7 +104,7 @@ App.factory("animateCSSBuild", [
 ]).animation(".animate-fade-up-big", [
   "animateCSSBuild"
   (animateCSSBuild) ->
-    return animateCSSBuild("animate-fade-up-big", "fadeInUpBig", "fadeOutUpBig")
+    animateCSSBuild "animate-fade-up-big", "fadeInUpBig", "fadeOutUpBig"
 ]).animation(".animate-fade-down-big", [
   "animateCSSBuild"
   (animateCSSBuild) ->
