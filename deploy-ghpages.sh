@@ -1,5 +1,5 @@
 #!/bin/bash
-grunt build --buildNumber=${TRAVIS_COMMIT}
+grunt build
 ( cd dist
   REPO=`echo ${GH_REF##*/} | cut -d'.' -f 1`
   grunt regex-replace:travis --repoName=${REPO}

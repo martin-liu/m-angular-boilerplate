@@ -5,7 +5,6 @@ module.exports = (grunt) ->
   # Project configuration.
   grunt.config.init
     buildEnv: grunt.option("buildEnv") or "prod"
-    buildNumber: grunt.option("buildNumber") or "0"
     repoName: grunt.option("repoName")
     pkg: grunt.file.readJSON("package.json")
     config: grunt.file.readJSON("grunt.json")
@@ -92,7 +91,7 @@ module.exports = (grunt) ->
             ]
             dest: "dist/"
             rename: (dest, src) ->
-              dest + src.replace("min.", "min.<%= buildNumber %>.")
+              dest + src.replace("min.", "min.<%= buildCommitId %>.")
           }
           {
             expand: true
@@ -322,6 +321,12 @@ module.exports = (grunt) ->
         styles: ['dist/css/styles.min.0.css']
       all: ['app/js/app.js']
 
+    "git-rev-parse":
+      build:
+        options:
+          prop: "buildCommitId"
+          number: "8"
+
   # Additional task plugins
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-coffee"
@@ -343,6 +348,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-cson"
   grunt.loadNpmTasks "grunt-concurrent"
   grunt.loadNpmTasks "grunt-ngdocs"
+  grunt.loadNpmTasks "grunt-git-rev-parse"
 
   grunt.registerTask "init", [
     "copy:init"
@@ -360,6 +366,7 @@ module.exports = (grunt) ->
   grunt.registerTask "build", [
     #    'test',
     "clean:build"
+    "git-rev-parse"
     "copy:tmp"
     "html2js"
     "coffee"

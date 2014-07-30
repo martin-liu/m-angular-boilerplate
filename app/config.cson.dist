@@ -19,4 +19,5 @@ piwik:
 intro:
   enabled: true
 
+urlHtml5Mode: true
 version: "0.0.1"

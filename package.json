@@ -5,7 +5,7 @@
   "author": "opsins",
   "repository": {
     "type:": "git",
-    "url": "https://github.scm.corp.ebay.com/opsins/bg-client.git"
+    "url": "https://github.com/martin-liu/m-angular-boilerplate.git"
   },
   "devDependencies": {
     "grunt": "~0.4.x",
@@ -29,7 +29,8 @@
     "grunt-contrib-connect": "^0.8.0",
     "grunt-cson": "~0.8.0",
     "grunt-concurrent": "^0.5.0",
-    "grunt-ngdocs": "^0.2.2"
+    "grunt-ngdocs": "^0.2.2",
+    "grunt-git-rev-parse": "~0.1.4"
   },
   "dependencies": {
     "moment": "~2.7.0"
