@@ -141,7 +141,7 @@ module.exports = (grunt) ->
         dest: "tmp/"
 
       options:
-        buildNumber: "<%= buildNumber %>"
+        buildCommitId: "<%= buildCommitId %>"
 
     jshint:
       files: [
