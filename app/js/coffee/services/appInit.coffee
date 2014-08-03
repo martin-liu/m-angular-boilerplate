@@ -1,6 +1,6 @@
 App.factory 'AppInitService', ($rootScope, $window, IntroService,
 $q, Util, Config, Cache) ->
-  defer = $q.defer()
+  promises = []
   return {
     init: ->
       $rootScope.$on '$routeChangeSuccess', ($event, current) ->
@@ -22,6 +22,9 @@ $q, Util, Config, Cache) ->
       $rootScope.startIntro = ->
         IntroService.start()
 
+      $rootScope.persistence = {}
+      persistenceDefer = $q.defer()
+      promises.push persistenceDefer
       # Watch to persist object in local storage
       $rootScope.$watch =>
         # use angular.toJson to remove internal properties like $$hashKey
@@ -29,13 +32,15 @@ $q, Util, Config, Cache) ->
       , (newVal, oldVal) =>
         key = 'persistent_object'
         if newVal == oldVal     # initial
-          $rootScope.persistence = {}
           _.extend $rootScope.persistence, Cache.get key
-          defer.resolve()
+          persistenceDefer.resolve()
         else
           Cache.set key, JSON.parse newVal
       , true                    # equal
 
+    add: (promise)->
+      promises.push promise
+
     done: ->
-      defer.promise
+      $q.all promises
   }
