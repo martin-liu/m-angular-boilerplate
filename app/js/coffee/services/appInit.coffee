@@ -1,5 +1,5 @@
 App.factory 'AppInitService', ($rootScope, $window, IntroService,
-$q, Util, Config, Cache) ->
+$q, Util, Config, Cache, Constant) ->
   promises = []
   return {
     init: ->
