@@ -6,6 +6,11 @@ window.App = angular.module 'app', ['ngSanitize', 'ngRoute', 'ngAnimate'
 angular.module 'm-service', ['m-util']
 angular.module 'm-directive', ['m-util']
 
+# Constans
+App.constant 'Config', Config
+App.constant 'Cache', locache
+App.constant '_', _
+
 App.config ($provide, $httpProvider, RestangularProvider) ->
   # Restangular base url
   RestangularProvider.setBaseUrl Config.uri.api
@@ -27,7 +32,3 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
 
 App.run (AppInitService) ->
   AppInitService.init()
-
-App.constant 'Config', Config
-App.constant 'Cache', locache
-App.constant '_', _
