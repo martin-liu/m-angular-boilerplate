@@ -15,6 +15,7 @@
                 "app/components/angular-animate/angular-animate.js",
                 "app/components/angular-bootstrap/ui-bootstrap-tpls.min.js",
                 "app/components/lodash/dist/lodash.min.js",
+                "app/components/underscore.string/dist/underscore.string.min.js",
                 "app/components/restangular/dist/restangular.min.js",
                 "app/components/locache/build/locache.min.js",
                 "app/components/headroom.js/dist/headroom.min.js",
