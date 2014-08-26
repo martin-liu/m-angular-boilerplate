@@ -34,8 +34,8 @@ module.exports = (grunt) ->
     concat:
       template:
         src: [
-          ".tmp/js/templates.js"
           ".tmp/concat/js/scripts.min.js"
+          ".tmp/js/templates.js"
         ]
         dest: ".tmp/concat/js/scripts.min.js"
 
