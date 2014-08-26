@@ -27,20 +27,17 @@ module.exports = (grunt) ->
     clean:
       build: [
         "dist/"
-        "tmp/"
+        ".tmp/"
       ]
-      tmp: ["tmp/"]
+      tmp: [".tmp/"]
 
     concat:
-      app:
+      template:
         src: [
-          "tmp/js/templates.js"
-          "app/js/app.js"
+          ".tmp/js/templates.js"
+          ".tmp/concat/js/scripts.min.js"
         ]
-        dest: "tmp/js/scripts.js"
-
-      components: "<%= config.concat.components %>"
-      css: "<%= config.concat.css %>"
+        dest: ".tmp/concat/js/scripts.min.js"
 
     copy:
       init:
@@ -70,42 +67,38 @@ module.exports = (grunt) ->
           expand: true
           cwd: "app/"
           src: ["**"]
-          dest: "tmp/"
+          dest: ".tmp/"
         ]
 
       build:
         files: [
           {
             expand: true
-            cwd: "tmp/"
+            cwd: ".tmp/"
             src: [
               "index.*"
               "maintainance.html"
-              "js/scripts.min.js"
               "js/json2.js"
               "image/**"
               "fonts/*"
-              "css/styles.min.css"
-              "routes.cson"
-              "intro.cson"
+              "routes.json"
+              "intro.json"
             ]
             dest: "dist/"
-            rename: (dest, src) ->
-              dest + src.replace("min.", "min.<%= buildCommitId %>.")
           }
           {
             expand: true
-            cwd: "tmp/"
+            cwd: ".tmp/"
             src: [
               "htaccess.dist"
-              "<%= buildEnv %>.config.cson"
+              "<%= buildEnv %>.json"
             ]
             dest: "dist/"
             rename: (dest, src) ->
               if src is "htaccess.dist"
                 dest + ".htaccess"
               else
-                dest + "config.cson"
+                dest + "config.json"
           }
           {
             expand: true
@@ -130,18 +123,10 @@ module.exports = (grunt) ->
     html2js:
       partials:
         src: ["app/partials/**/*.html"]
-        dest: "tmp/js/templates.js"
+        dest: ".tmp/js/templates.js"
         module: "templates"
         options:
           base: "app/"
-
-    htmlrefs:
-      dist:
-        src: "tmp/index.*"
-        dest: "tmp/"
-
-      options:
-        buildCommitId: "<%= buildCommitId %>"
 
     jshint:
       files: [
@@ -152,14 +137,6 @@ module.exports = (grunt) ->
         jshintrc: ".jshintrc"
 
     less:
-      prod:
-        options:
-          compress: true
-          yuicompress: true
-
-        files:
-          "tmp/css/styles.css": ["tmp/less/build.less"]
-
       dev:
         files:
           "app/css/styles.css": ["app/css/less/**/*.less"]
@@ -178,7 +155,7 @@ module.exports = (grunt) ->
 
     "regex-replace":
       strict:
-        src: ["tmp/js/scripts.js"]
+        src: [".tmp/concat/js/scripts.min.js"]
         actions: [
           name: "use strict"
           search: "\\'use strict\\';"
@@ -187,7 +164,7 @@ module.exports = (grunt) ->
         ]
 
       manifest:
-        src: ["tmp/index.*"]
+        src: [".tmp/index.*"]
         actions: [
           name: "manifest"
           search: "<html>"
@@ -195,7 +172,7 @@ module.exports = (grunt) ->
         ]
 
       templates:
-        src: ["tmp/js/scripts.js"]
+        src: [".tmp/concat/js/scripts.min.js"]
         actions: [
           name: "templates"
           search: /app\',\s\[/
@@ -210,14 +187,6 @@ module.exports = (grunt) ->
           search: /<base href="\/">/
           replace: '<base <%= repoName %> href="\/<%= repoName %>\/">'
         ]
-
-    uglify:
-      app:
-        options:
-          mangle: false
-
-        files:
-          "tmp/js/scripts.js": "tmp/js/scripts.js"
 
     karma:
       unit:
@@ -260,7 +229,7 @@ module.exports = (grunt) ->
         ext: '.json'
       prod:
         expand: true
-        src: ['dist/*.cson' ]
+        src: ['.tmp/*.cson' ]
         dest: ''
         ext: '.json'
     watch:
@@ -327,10 +296,34 @@ module.exports = (grunt) ->
           prop: "buildCommitId"
           number: "8"
 
+    ngAnnotate:
+      dist:
+        files:
+          '.tmp/concat/js/scripts.min.js': '.tmp/concat/js/scripts.min.js'
+
+    filerev:
+      options:
+        encoding: 'utf8'
+        algorithm: 'md5'
+        length: 8
+      images:
+        src: [
+          'dist/image/**/*.{jpg,jpeg,gif,png,webp}'
+          'dist/js/scripts.min.js'
+          'dist/css/styles.min.css'
+        ]
+
+    useminPrepare:
+      html: '.tmp/index.*'
+
+    usemin:
+      html: 'dist/index.*'
+
   # Additional task plugins
   grunt.loadNpmTasks "grunt-contrib-watch"
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-uglify"
+  grunt.loadNpmTasks "grunt-contrib-cssmin"
   grunt.loadNpmTasks "grunt-contrib-concat"
   grunt.loadNpmTasks "grunt-contrib-less"
   grunt.loadNpmTasks "grunt-contrib-copy"
@@ -339,7 +332,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-conventional-changelog"
   grunt.loadNpmTasks "grunt-bump"
   grunt.loadNpmTasks "grunt-html2js"
-  grunt.loadNpmTasks "grunt-htmlrefs"
   grunt.loadNpmTasks "grunt-lesslint"
   grunt.loadNpmTasks "grunt-manifest"
   grunt.loadNpmTasks "grunt-regex-replace"
@@ -348,7 +340,9 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-cson"
   grunt.loadNpmTasks "grunt-concurrent"
   grunt.loadNpmTasks "grunt-ngdocs"
-  grunt.loadNpmTasks "grunt-git-rev-parse"
+  grunt.loadNpmTasks "grunt-usemin"
+  grunt.loadNpmTasks "grunt-ng-annotate"
+  grunt.loadNpmTasks "grunt-filerev"
 
   grunt.registerTask "init", [
     "copy:init"
@@ -363,25 +357,31 @@ module.exports = (grunt) ->
     "lesslint"
   ]
 
+  grunt.registerTask 'do-usemin', [
+    'useminPrepare'
+    'concat:generated'
+    'concat:template'
+    "regex-replace:strict"
+    "regex-replace:templates"
+    'ngAnnotate'
+    'cssmin:generated'
+    'uglify:generated'
+    "regex-replace:manifest"
+    "cson:prod"
+    "copy:build"
+    'filerev'
+    'usemin'
+  ]
+
   grunt.registerTask "build", [
     #    'test',
     "clean:build"
-    "git-rev-parse"
     "copy:tmp"
     "html2js"
     "coffee"
-    "concat:app"
-    "regex-replace:strict"
-    "regex-replace:templates"
-    "uglify"
-    "regex-replace:manifest"
-    "concat:components"
-    "less:prod"
-    "concat:css"
-    "htmlrefs"
-    "copy:build"
-    "cson:prod"
-    "clean:tmp"
+    "less:dev"
+    "do-usemin"
+    #"clean:tmp"
     "manifest"
     "changelog"
   ]

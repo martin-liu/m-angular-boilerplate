@@ -2,10 +2,10 @@
   "name": "M Angular Boilerplate",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "1.2.20",
-    "angular-route": "1.2.20",
-    "angular-sanitize": "1.2.20",
-    "angular-animate": "1.2.20",
+    "angular": "1.2.22",
+    "angular-route": "1.2.22",
+    "angular-sanitize": "1.2.22",
+    "angular-animate": "1.2.22",
     "angular-bootstrap": "0.11.0",
     "restangular": "~1.4.0",
     "animate.css": "~3.1.0",
@@ -16,10 +16,11 @@
     "angular-bindonce": "~0.3.1",
     "intro.js": "~0.9.0",
     "nprogress": "~0.1.6",
-    "underscore.string": "~2.3.3"
+    "underscore.string": "~2.3.3",
+    "ui-component": "git@github.corp.ebay.com:opsins/ui-component.git#*"
   },
   "devDependencies": {
     "less.js": "~1.6.3",
-    "angular-mocks": "1.2.20"
+    "angular-mocks": "1.2.22"
   }
 }
