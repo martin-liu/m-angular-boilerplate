@@ -10,7 +10,7 @@
     "restangular": "~1.4.0",
     "animate.css": "~3.1.0",
     "bootstrap": "~3.1.1",
-    "font-awesome": "4.0.3",
+    "font-awesome": "~4.2.0",
     "locache": "~0.4.2",
     "headroom.js": "~0.6.0",
     "angular-bindonce": "~0.3.1",
