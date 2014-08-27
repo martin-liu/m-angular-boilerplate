@@ -111,13 +111,13 @@ body {
 .float-shadow:hover, .float-shadow:focus, .float-shadow:active {
   -webkit-transform: translateY(-5px);
   transform: translateY(-5px);
-  /* move the element up by 5px */
+/* move the element up by 5px */
 }
 .float-shadow:hover:before, .float-shadow:focus:before, .float-shadow:active:before {
   opacity: 1;
   -webkit-transform: translateY(5px);
   transform: translateY(5px);
-  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+/* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
 /* END: Animate */
 
@@ -128,10 +128,10 @@ body {
 .navbar {
   border-radius: 0;
   margin-bottom: 0px;
-}
 
-.navbar-brand {
-  height: 45px;
+  .navbar-brand, .navbar-nav li a{
+    height: 45px;
+  }
 }
 
 .breadcrumb {
