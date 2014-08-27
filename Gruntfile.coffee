@@ -376,10 +376,10 @@ module.exports = (grunt) ->
   grunt.registerTask "build", [
     #    'test',
     "clean:build"
-    "copy:tmp"
-    "html2js"
     "coffee"
     "less:dev"
+    "copy:tmp"
+    "html2js"
     "do-usemin"
     #"clean:tmp"
     "manifest"
