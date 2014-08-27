@@ -316,6 +316,7 @@ module.exports = (grunt) ->
     useminPrepare:
       html: '.tmp/index.*'
 
+    # Cache busting: Replace js/css/image references in tpls
     usemin:
       html: ['dist/index.*', 'dist/js/scripts.min.*.js']
       options:
