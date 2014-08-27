@@ -317,7 +317,9 @@ module.exports = (grunt) ->
       html: '.tmp/index.*'
 
     usemin:
-      html: 'dist/index.*'
+      html: ['dist/index.*', 'dist/js/scripts.min.*.js']
+      options:
+        assetsDirs: ['dist']
 
   # Additional task plugins
   grunt.loadNpmTasks "grunt-contrib-watch"
