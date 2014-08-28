@@ -9,12 +9,13 @@ angular.module('m-util',[]).service 'Util', ($modal, $timeout, $location
     options = angular.extend {
       backdropFade: true
       templateUrl: template
-      controller: ($scope, $modalInstance, scope)->
+      controller: ["$scope", "$modalInstance", "scope", ($scope, $modalInstance, scope)->
         $scope = angular.extend($scope, scope)
         $scope.animate = Config.default.modalAnimateIn
         $scope.close = (data) ->
           $scope.animate = Config.default.modalAnimateOut
           $timeout (-> $modalInstance.close(data)),500
+      ]
       resolve: {
         scope : ->
           scope
