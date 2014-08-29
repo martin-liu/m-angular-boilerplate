@@ -142,4 +142,7 @@ angular.module('m-util',[]).service 'Util', ($modal, $timeout, $location
   @capitalize = (str) ->
     str.charAt(0).toUpperCase() + str.slice(1)
 
+  @solrEscape = (q)->
+    q.replace /[+\-\!\(\)\{\}\[\]\^"~\*\?:\\]+/g, ' '
+
   return @

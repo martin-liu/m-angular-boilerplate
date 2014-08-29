@@ -16,12 +16,12 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
   RestangularProvider.setBaseUrl Config.uri.api
 
   # Global http error handler
-  $httpProvider.interceptors.push ($timeout, $q, $rootScope, $location) ->
+  $httpProvider.interceptors.push ($timeout, $q, $rootScope, $location, Util) ->
     request : (config) ->
       return config || $q.when(config)
     responseError : (response) ->
       if !response.status       # reload when no status code
-        document.location.reload()
+        Util.confirm ''document.location.reload()
       if response.data && response.data.message
         tplErrorHandler = 'partials/modal/error_handler.html'
         $rootScope.Util.createDialog tplErrorHandler
