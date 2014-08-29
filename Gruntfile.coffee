@@ -34,10 +34,10 @@ module.exports = (grunt) ->
     concat:
       template:
         src: [
-          ".tmp/concat/js/scripts.js"
+          ".tmp/concat/js/scripts.min.js"
           ".tmp/js/templates.js"
         ]
-        dest: ".tmp/concat/js/scripts.js"
+        dest: ".tmp/concat/js/scripts.min.js"
 
     copy:
       init:
@@ -88,12 +88,6 @@ module.exports = (grunt) ->
           }
           {
             expand: true
-            cwd: ".tmp/concat/"
-            src: "**/*.*"
-            dest: "dist/"
-          }
-          {
-            expand: true
             cwd: ".tmp/"
             src: [
               "htaccess.dist"
@@ -123,6 +117,17 @@ module.exports = (grunt) ->
             cwd: "app/components/zeroclipboard/"
             src: ["ZeroClipboard.swf"]
             dest: "dist/asset/"
+          }
+        ]
+      source:
+        files: [
+          {
+            expand: true
+            cwd: ".tmp/concat/"
+            src: [
+              "js/scripts.min.js"
+            ]
+            dest: "dist/"
           }
         ]
 
@@ -161,7 +166,7 @@ module.exports = (grunt) ->
 
     "regex-replace":
       strict:
-        src: [".tmp/concat/js/scripts.js"]
+        src: [".tmp/concat/js/scripts.min.js"]
         actions: [
           name: "use strict"
           search: "\\'use strict\\';"
@@ -178,7 +183,7 @@ module.exports = (grunt) ->
         ]
 
       templates:
-        src: [".tmp/concat/js/scripts.js"]
+        src: [".tmp/concat/js/scripts.min.js"]
         actions: [
           name: "templates"
           search: /app\',\s\[/
@@ -192,6 +197,14 @@ module.exports = (grunt) ->
           name: "travis"
           search: /<base href="\/">/
           replace: '<base <%= repoName %> href="\/<%= repoName %>\/">'
+        ]
+
+      sourceMap:
+        src: ['dist/js/scripts.min.map']
+        actions: [
+          name: "sourceMap"
+          search: /"sources":\["([^"]*)"\]/
+          replace: '"sources":["scripts.min.js"]'
         ]
 
     karma:
@@ -292,8 +305,8 @@ module.exports = (grunt) ->
     ngdocs:
       options:
         dest: 'app/docs'
-        scripts: ['dist/js/scripts.min.*.js']
-        styles: ['dist/css/styles.min.*.css']
+        scripts: ['dist/js/scripts.min.0.js']
+        styles: ['dist/css/styles.min.0.css']
       all: ['app/js/app.js']
 
     "git-rev-parse":
@@ -305,7 +318,7 @@ module.exports = (grunt) ->
     ngAnnotate:
       dist:
         files:
-          '.tmp/concat/js/scripts.js': '.tmp/concat/js/scripts.js'
+          '.tmp/concat/js/scripts.min.js': '.tmp/concat/js/scripts.min.js'
 
     filerev:
       options:
@@ -315,62 +328,22 @@ module.exports = (grunt) ->
       images:
         src: [
           'dist/image/**/*.{jpg,jpeg,gif,png,webp}'
-        ]
-      scripts:
-        src: [
           'dist/js/scripts.min.js'
           'dist/css/styles.min.css'
         ]
 
     useminPrepare:
       html: '.tmp/index.*'
-      options:
-        flow:
-          steps:
-            js: [
-              'concat'
-              'uglifyjs'
-            ]
-            css: ['concat']
-          post:
-            js: [
-              {
-                name: 'concat'
-                createConfig: (context, block)->
-                  generated = context.options.generated
-                  generated.files = generated.files.map (f)->
-                    f.dest = f.dest.replace 'min.', ''
-                    f
-              }
-              {
-                name:'uglify'
-                createConfig: (context, block)->
-                  generated = context.options.generated
-                  generated.files[0] =
-                    src: 'dist/js/scripts.js'
-                    dest: 'dist/js/scripts.min.js'
-              }
-            ]
 
     # Cache busting: Replace js/css/image references in tpls
     usemin:
-      html: ['dist/index.*', 'dist/css/styles.css', 'dist/js/scripts.js']
+      html: ['dist/index.*', 'dist/js/scripts.min.*.js', 'dist/css/styles.min.*.css']
       options:
         assetsDirs: ['dist']
 
     uglify:
       options:
         sourceMap: "prod" != (grunt.option("buildEnv") or "prod")
-
-    cssmin:
-      generated:
-        files: [
-          {
-          expand: true
-          src: [ 'dist/css/styles.css' ]
-          ext: '.min.css'
-          }
-        ]
 
   # Additional task plugins
   grunt.loadNpmTasks "grunt-contrib-watch"
@@ -418,15 +391,14 @@ module.exports = (grunt) ->
     "regex-replace:templates"
     'ngAnnotate'
     'cssmin:generated'
+    'uglify:generated'
     "regex-replace:manifest"
     "cson:prod"
     "copy:build"
-    'filerev:images'
+    "regex-replace:sourceMap"
+    'filerev'
     'usemin'
-    'uglify:generated'
-    'filerev:scripts'
-    # twice usemin
-    'usemin'
+    'copy:source'
   ]
 
   grunt.registerTask "build", [
@@ -437,7 +409,7 @@ module.exports = (grunt) ->
     "copy:tmp"
     "html2js"
     "do-usemin"
-    #"clean:tmp"
+    "clean:tmp"
     "manifest"
     "changelog"
   ]
