@@ -20,8 +20,6 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
     request : (config) ->
       return config || $q.when(config)
     responseError : (response) ->
-      if !response.status       # reload when no status code
-        Util.confirm ''document.location.reload()
       if response.data && response.data.message
         tplErrorHandler = 'partials/modal/error_handler.html'
         $rootScope.Util.createDialog tplErrorHandler
