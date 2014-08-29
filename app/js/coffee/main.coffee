@@ -16,7 +16,7 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
   RestangularProvider.setBaseUrl Config.uri.api
 
   # Global http error handler
-  $httpProvider.interceptors.push ($timeout, $q, $rootScope, $location, Util) ->
+  $httpProvider.interceptors.push ($timeout, $q, $rootScope, $location) ->
     request : (config) ->
       return config || $q.when(config)
     responseError : (response) ->
