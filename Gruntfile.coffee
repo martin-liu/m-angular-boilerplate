@@ -78,7 +78,7 @@ module.exports = (grunt) ->
             src: [
               "index.*"
               "maintainance.html"
-              "js/json2.js"
+              "js/lib/*.js"
               "image/**"
               "fonts/*"
               "routes.json"
