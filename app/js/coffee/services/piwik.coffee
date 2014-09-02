@@ -6,7 +6,7 @@ App.factory 'PiwikService', (Config)->
       siteId = Config.piwik.siteId
       pkBaseURL = Config.piwik.url
       app = Config.piwik.app
-      grod = Config.piwik.prod
+      prod = Config.piwik.prod
       piwikTracker = Piwik.getTracker "#{pkBaseURL}/piwik.php", siteId
       piwikTracker.setCustomVariable 1, "User", username, "visit"
       piwikTracker.setCustomVariable 2, "App", app, "page"
