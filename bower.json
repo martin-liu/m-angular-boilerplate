@@ -16,10 +16,14 @@
     "angular-bindonce": "~0.3.1",
     "intro.js": "~0.9.0",
     "nprogress": "~0.1.6",
-    "underscore.string": "~2.3.3"
+    "underscore.string": "~2.3.3",
+    "modernizr": "~2.8.3"
   },
   "devDependencies": {
     "less.js": "~1.6.3",
     "angular-mocks": "1.2.22"
+  },
+  "resolutions": {
+    "angular": "1.2.22"
   }
 }

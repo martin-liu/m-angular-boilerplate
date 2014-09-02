@@ -28,7 +28,9 @@ angular.module("config", [])
     return
 
   # Set to use HTML5 mode, which removes the #! from modern browsers.
-  $locationProvider.html5Mode !!Config.urlHtml5Mode
+  # Only when config it and browser support HTML5 history API
+  isHtml5Mode = !!Config.urlHtml5Mode && Modernizr.history
+  $locationProvider.html5Mode isHtml5Mode
   $locationProvider.hashPrefix '!'
 
   return
