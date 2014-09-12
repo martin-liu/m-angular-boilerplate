@@ -125,7 +125,7 @@ angular.module('m-util',[]).service 'Util', ($modal, $timeout, $location
     fullname : user.displayName
     label : user.label
 
-  @getWithCache = (key, isSession, getFunc)->
+  @getWithCache = (key, isSession, getFunc, timeout)->
     cache = Cache
     if isSession
       cache = Cache.session
@@ -137,7 +137,7 @@ angular.module('m-util',[]).service 'Util', ($modal, $timeout, $location
     else
       promise = getFunc()
       promise.then (data)->
-        cache.set key, data
+        cache.set key, data, timeout
       return promise
 
   @capitalize = (str) ->

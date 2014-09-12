@@ -22,8 +22,5 @@
   "devDependencies": {
     "less.js": "~1.6.3",
     "angular-mocks": "1.2.22"
-  },
-  "resolutions": {
-    "angular": "1.2.22"
   }
 }
