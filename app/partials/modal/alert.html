@@ -5,15 +5,7 @@
         <h4 ng-if="type == 'confirm'">Confirm</h4>
     </div>
     <div class="modal-body">
-        <p class="alert alert-success" ng-if="type == 'success'">
-            {{ message }}
-        </p>
-        <p class="alert alert-danger" ng-if="type == 'fail'">
-            {{ message }}
-        </p>
-        <p class="alert alert-warning" ng-if="type == 'confirm'">
-            {{ message }}
-        </p>
+        <p class="alert {{class}}" ng-bind-html="message"></p>
     </div>
     <div class="modal-footer" style="padding: 5px 20px">
       <div ng-if="type == 'confirm'">

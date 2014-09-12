@@ -27,9 +27,14 @@ angular.module('m-util',[]).service 'Util', ($modal, $timeout, $location
     dialog
 
   @alert = (message, type, thenFunc)->
+    mclass = switch type
+      when 'success' then 'alert-success'
+      when 'fail' then 'alert-danger'
+      when 'confirm' then 'alert-warning'
     scope =
       message : message
       type : type
+      class: mclass
     @createDialog alertTpl, scope, thenFunc
 
   @success = (message, thenFunc)->
