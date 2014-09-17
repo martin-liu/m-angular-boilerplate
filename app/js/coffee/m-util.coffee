@@ -104,9 +104,13 @@ angular.module('m-util',[]).service 'Util', ($modal, $timeout, $location
       return input + '...'
     return input
 
-  @redirect = (path) ->
+  @redirect = (path, force) ->
     path = path.replace '%', ''
-    $location.url path
+    if $location.path() != path
+      $location.url path
+    else
+      if force
+        $route.reload()
 
   @reload = ->
     $route.reload()
