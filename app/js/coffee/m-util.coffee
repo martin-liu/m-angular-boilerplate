@@ -106,7 +106,7 @@ angular.module('m-util',[]).service 'Util', ($modal, $timeout, $location
 
   @redirect = (path, force) ->
     path = path.replace '%', ''
-    if $location.path() != path
+    if $location.url() != path
       $location.url path
     else
       if force
