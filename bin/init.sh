@@ -9,3 +9,5 @@ sudo npm -g install grunt-cli karma bower || {
     exit
 }
 npm install && bower install && grunt init
+
+grunt start

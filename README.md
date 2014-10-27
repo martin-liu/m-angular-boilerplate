@@ -10,7 +10,7 @@
 
 **via** `wget`:
 
-wget --no-check-certificate https://raw.githubusercontent.com/martin-liu/m-angular-boilerplate/master/bin/init.sh -O - | sh
+`wget --no-check-certificate https://raw.githubusercontent.com/martin-liu/m-angular-boilerplate/master/bin/init.sh -O - | sh`
 
 **Or manual way**:
   * Install git, nodejs
@@ -25,7 +25,9 @@ wget --no-check-certificate https://raw.githubusercontent.com/martin-liu/m-angul
   * For **Windows** environment, you must install msysgit correctly, and run `bower install` from the Windows Command Prompt. This is the limitation of Bower only
 
 ## Development
-  * Run `grunt dev`, this will start a static server on http://localhost:8000, and also run watch tasks. You can run `grunt watch` only if the directory is already under a web server
+  * Run `grunt start`, this will start a static server on http://localhost:8000, and also run watch tasks. You can run `grunt watch` only if the directory is already under a web server
+
+## Documentation
 
 ### Watch task
   * JS: All of the coffee codes under `app/js/coffee/` will be compiled and concatenated to `app/app.js`
@@ -42,8 +44,6 @@ wget --no-check-certificate https://raw.githubusercontent.com/martin-liu/m-angul
   * `app/js/coffee/main.coffee`
       1. Angular config for dependencies and global error handler
       2. `$rootScope` binding
-
-
 
 ## Learn
 ### Directory Structure
