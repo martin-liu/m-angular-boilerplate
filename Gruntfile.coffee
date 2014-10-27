@@ -295,6 +295,8 @@ module.exports = (grunt) ->
           port: 8000
           base: 'app'
           keepalive: true
+          open: true
+          useAvailablePort: true
     # Concurrent tasks
     concurrent:
       dev:
@@ -374,7 +376,7 @@ module.exports = (grunt) ->
     "copy:init"
   ]
 
-  grunt.registerTask "dev", [
+  grunt.registerTask "start", [
     "concurrent:dev"
   ]
 
