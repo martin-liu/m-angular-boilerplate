@@ -14,9 +14,11 @@
 
 **Or manual way**:
   * Install git, nodejs
-  * Go to your repository directory
-  * `git remote add bp https://github.com/martin-liu/m-angular-boilerplate.git`
-  * `git pull bp master`
+  * If you already have a repository
+    + Go to your repository directory
+    + `git remote add bp https://github.com/martin-liu/m-angular-boilerplate.git`
+    + `git pull bp master`
+  * Or you can fork this project, and run `git clone YOUR_REPO_URL`
   * `sudo npm -g install grunt-cli karma bower`
   * `npm install && bower install && grunt init`
 

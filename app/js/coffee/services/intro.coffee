@@ -1,6 +1,7 @@
 'use strict'
 App.factory 'IntroService', (Config, Cache, $timeout)->
   intro = null
+  cacheKey = "#{Config.name}_IntroService_init"
   initIntro = ->
     if introJs?
       steps = Config.intros
@@ -23,12 +24,12 @@ App.factory 'IntroService', (Config, Cache, $timeout)->
   init: () ->
     # Initial introducing
     initIntro()
-    isInit = Cache.get 'IntroService_init'
+    isInit = Cache.get cacheKey
     if not isInit
       start = @start
       $timeout ->
         if start()
-          Cache.set 'IntroService_init', true
+          Cache.set cacheKey, true
       , 1500
 
   start: ->

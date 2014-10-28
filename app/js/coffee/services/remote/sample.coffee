@@ -1,8 +1,8 @@
 'use strict'
-App.factory 'SampleRemoteService', (Restangular, Util) ->
+App.factory 'SampleRemoteService', (Config, Restangular, Util) ->
   rest = Restangular.all 'ops'
   getCacheKey = (method, param)->
-    "SampleRemoteservice_#{method}_#{JSON.stringify param}"
+    "#{Config.name}_SampleRemoteservice_#{method}_#{JSON.stringify param}"
   # Session cache
   getWithCache = (method, param, func)->
     Util.getWithCache getCacheKey(method, param), true, func
