@@ -30,6 +30,7 @@
   * Run `grunt start`, this will start a static server on http://localhost:8000, and also run watch tasks. You can run `grunt watch` only if the directory is already under a web server
 
 ## Documentation
+Please see [wiki](https://github.com/martin-liu/m-angular-boilerplate/wiki)
 
 ### Watch task
   * JS: All of the coffee codes under `app/js/coffee/` will be compiled and concatenated to `app/app.js`
