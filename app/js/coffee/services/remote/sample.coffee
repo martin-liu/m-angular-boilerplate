@@ -4,8 +4,8 @@ App.factory 'SampleRemoteService', (Config, Restangular, Util) ->
   getCacheKey = (method, param)->
     "#{Config.name}_SampleRemoteservice_#{method}_#{JSON.stringify param}"
   # Session cache
-  getWithCache = (method, param, func)->
-    Util.getWithCache getCacheKey(method, param), true, func
+  getWithCache = (method, param, func, timeout)->
+    Util.getWithCache getCacheKey(method, param), true, func, timeout
 
   @query = (param) ->
     getWithCache 'query', param, ->
