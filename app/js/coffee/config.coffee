@@ -26,6 +26,10 @@ angular.module("config", [])
       route.params.controller = 'BaseCtrl'
     $routeProvider.when route.url, route.params
     return
+  # Otherwise
+  $routeProvider.otherwise {
+    templateUrl: 'partials/404.html'
+  }
 
   # Set to use HTML5 mode, which removes the #! from modern browsers.
   # Only when config it and browser support HTML5 history API
