@@ -77,7 +77,7 @@ module.exports = (grunt) ->
             cwd: ".tmp/"
             src: [
               "index.*"
-              "maintainance.html"
+              "*.html"
               "js/lib/*.js"
               "image/**"
               "fonts/*"
