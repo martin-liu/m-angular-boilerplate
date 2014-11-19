@@ -32,6 +32,13 @@ module.exports = (grunt) ->
       tmp: [".tmp/"]
 
     concat:
+      dev:
+        src: [
+          "app/js/app.js"
+          "app/js/coffee/**/*.js"
+        ]
+        dest: "app/js/app.js"
+
       template:
         src: [
           ".tmp/concat/js/scripts.min.js"
@@ -259,12 +266,13 @@ module.exports = (grunt) ->
           atBegin: true
       scripts:
         files: [
-          "app/js/coffee/**/*.coffee"
-          "test/coffee/**/*.coffee"
+          "app/js/coffee/**/*.*"
+          "test/coffee/**/*.*"
         ]
         tasks: [
           "coffee"
           "coffeelint"
+          "concat:dev"
           "ngdocs"
         ]
         options:
@@ -408,6 +416,7 @@ module.exports = (grunt) ->
     #    'test',
     "clean:build"
     "coffee"
+    "concat:dev"
     "less:dev"
     "copy:tmp"
     "html2js"
