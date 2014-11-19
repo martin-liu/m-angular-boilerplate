@@ -331,8 +331,8 @@ module.exports = (grunt) ->
       images:
         src: [
           'dist/image/**/*.{jpg,jpeg,gif,png,webp}'
-          'dist/js/scripts.min.js'
-          'dist/css/styles.min.css'
+          'dist/js/scripts.*.js'
+          'dist/css/styles.*.css'
         ]
 
     useminPrepare:
