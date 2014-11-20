@@ -338,7 +338,10 @@ module.exports = (grunt) ->
         length: 8
       images:
         src: [
-          'dist/image/**/*.{jpg,jpeg,gif,png,webp}'
+          # do not process subfolder of image/, in case for dynamic img urls,
+          # which will not be replaced correctly.
+          # you can put dynamic usage images to subfolders
+          'dist/image/*.{jpg,jpeg,gif,png,webp}'
           'dist/js/scripts.*.js'
           'dist/css/styles.*.css'
         ]
