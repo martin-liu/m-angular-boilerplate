@@ -353,7 +353,8 @@ module.exports = (grunt) ->
     usemin:
       html: ['dist/index.*', 'dist/js/scripts.min.*.js', 'dist/css/styles.min.*.css']
       options:
-        assetsDirs: ['dist']
+        # add 'dist/css' here is for the case url('../image/xx.png')
+        assetsDirs: ['dist', 'dist/css']
 
     uglify:
       options:
