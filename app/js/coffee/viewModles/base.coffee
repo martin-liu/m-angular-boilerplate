@@ -11,6 +11,7 @@ AppInitService, Config, LoadingService, IntroService, NProgressService) ->
       AppInitService.done().then =>
         @pageInit().then @bindView
         if Config.debug == true
+          window.vm = @
           window.scope = @scope
 
     initialize : =>
