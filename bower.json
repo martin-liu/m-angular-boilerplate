@@ -17,10 +17,14 @@
     "intro.js": "~0.9.0",
     "nprogress": "~0.1.6",
     "underscore.string": "~2.3.3",
-    "modernizr": "~2.8.3"
+    "modernizr": "~2.8.3",
+    "inspector-gadget": "~0.2.0"
   },
   "devDependencies": {
     "less.js": "~1.6.3",
     "angular-mocks": "1.2.22"
+  },
+  "resolutions": {
+    "bootstrap": "~3.1.1"
   }
 }
