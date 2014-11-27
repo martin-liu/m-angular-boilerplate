@@ -24,9 +24,8 @@ App.config ($provide, $httpProvider, RestangularProvider) ->
         tplErrorHandler = 'partials/modal/error_handler.html'
         $rootScope.Util.createDialog tplErrorHandler
         , {message: response.data.message}, ->
-        $q.reject response
-      else
-        response
+
+      $q.reject response
 
 App.run (AppInitService) ->
   AppInitService.init()
