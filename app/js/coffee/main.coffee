@@ -1,6 +1,6 @@
 'use strict'
 window.App = angular.module 'app', ['ngSanitize', 'ngRoute', 'ngAnimate'
-, 'restangular', 'ui.bootstrap', 'headroom', 'swd.inspector-gadget'
+, 'restangular', 'ui.bootstrap', 'headroom'
 , 'config', 'm-directive', 'm-service']
 
 angular.module 'm-service', ['m-util']
