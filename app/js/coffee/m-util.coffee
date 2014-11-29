@@ -155,4 +155,7 @@ angular.module('m-util',[]).service 'Util', ($modal, $timeout, $location
   @solrEscape = (q)->
     q.replace /[+\-\!\(\)\{\}\[\]\^"~\*\?:\\]+/g, ' '
 
+  @removeHtmlTags = (str)->
+    str.replace /<[^>]*>?/g, ''
+
   return @
