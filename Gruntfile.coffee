@@ -156,8 +156,10 @@ module.exports = (grunt) ->
 
     less:
       dev:
+        options:
+          syncImport: true
         files:
-          "app/css/styles.css": ["app/css/less/**/*.less"]
+          "app/css/styles.css": ["app/css/less/build.less"]
 
     lesslint:
       src: ["app/css/less/**.less"]
