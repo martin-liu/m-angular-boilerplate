@@ -7,8 +7,11 @@ App.factory 'SampleRemoteService', (Config, Restangular, Util) ->
   getWithCache = (method, param, func, timeout)->
     Util.getWithCache getCacheKey(method, param), true, func, timeout
 
-  @query = (param) ->
+  @query = (param, canceler) ->
     getWithCache 'query', param, ->
-      rest.one('query').get param
+      if canceler && canceler.promise
+        rest.one('query').withHttpConfig({timeout: canceler.promise}).get param
+      else
+        rest.one('query').get param
 
   return @
