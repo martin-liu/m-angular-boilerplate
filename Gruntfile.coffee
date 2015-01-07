@@ -286,13 +286,7 @@ module.exports = (grunt) ->
           "app/js/coffee/**/*.*"
           "test/coffee/**/*.*"
         ]
-        tasks: [
-          "coffee:configDev"
-          "coffee:scripts"
-          "coffeelint"
-          "concat:dev"
-          "ngdocs"
-        ]
+        tasks: ["do-watch"]
         options:
           debounceDelay: 300
           atBegin: true
@@ -414,6 +408,14 @@ module.exports = (grunt) ->
     "lesslint"
   ]
 
+  grunt.registerTask "do-watch", [
+    "coffee:configDev"
+    "coffee:scripts"
+    "coffeelint"
+    "concat:dev"
+    "ngdocs"
+  ]
+
   grunt.registerTask 'do-usemin', [
     'useminPrepare'
     'concat:generated'
@@ -445,5 +447,6 @@ module.exports = (grunt) ->
     "clean:tmp"
     "manifest"
     "changelog"
+    "do-watch" # revert local files
   ]
   return
