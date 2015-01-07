@@ -1,5 +1,5 @@
 'use strict'
-window.App = angular.module 'app', ['ngSanitize', 'ngRoute', 'ngAnimate'
+window.App = angular.module Config.name, ['ngSanitize', 'ngRoute', 'ngAnimate'
 , 'restangular', 'ui.bootstrap', 'headroom'
 , 'config', 'm-directive', 'm-service']
 

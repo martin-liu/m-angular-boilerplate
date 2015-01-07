@@ -217,8 +217,8 @@ module.exports = (grunt) ->
         src: [".tmp/concat/js/scripts.min.js"]
         actions: [
           name: "templates"
-          search: /app\',\s\[/
-          replace: "app', ['templates',"
+          search: /Config.name,\s\[/
+          replace: "Config.name, ['templates',"
           flags: "gmi"
         ]
 
@@ -246,17 +246,17 @@ module.exports = (grunt) ->
         configFile: "karma.e2e.conf.js"
 
     coffee:
-      configDev:
-        files:
-          "app/js/config.js": [
-            "app/config/config.coffee"
-            "app/config/**/*.coffee"
-          ]
       configProd:
         files:
           ".tmp/js/config.js": [
             ".tmp/config/config.coffee"
             ".tmp/config/**/*.coffee"
+          ]
+      configDev:
+        files:
+          "app/js/config.js": [
+            "app/config/config.coffee"
+            "app/config/**/*.coffee"
           ]
       scripts:
         files:
