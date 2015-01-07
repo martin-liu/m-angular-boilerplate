@@ -1,4 +1,4 @@
-[
+Config.routes = [
   {
     url: "/"
     params:

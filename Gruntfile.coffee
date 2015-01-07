@@ -34,10 +34,21 @@ module.exports = (grunt) ->
     concat:
       dev:
         src: [
+          "app/js/config.js"
+          "app/config/**/*.js"
           "app/js/app.js"
           "app/js/coffee/**/*.js"
         ]
         dest: "app/js/app.js"
+
+      prod:
+        src: [
+          ".tmp/js/config.js"
+          ".tmp/config/**/*.js"
+          "app/js/app.js"
+          "app/js/coffee/**/*.js"
+        ]
+        dest: ".tmp/js/app.js"
 
       template:
         src: [
@@ -52,13 +63,18 @@ module.exports = (grunt) ->
           {
             expand: true
             cwd: 'app/'
-            src: ['config.cson.dist', 'htaccess.dist']
+            src: ['htaccess.dist']
             dest: 'app/'
             rename: (dest, src) ->
-              if src == 'htaccess.dist'
-                dest + '.htaccess'
-              else
-                dest + 'config.cson'
+              dest + '.htaccess'
+          }
+          {
+            expand: true
+            cwd: 'app/config/'
+            src: ['config.coffee.dist']
+            dest: 'app/config/'
+            rename: (dest, src) ->
+              dest + 'config.coffee'
           }
           {
             expand: true
@@ -77,6 +93,18 @@ module.exports = (grunt) ->
           dest: ".tmp/"
         ]
 
+      config:
+        files:[
+          {
+            expand: true
+            cwd: ".tmp/config/"
+            src: ["config.coffee.<%= buildEnv %>"]
+            dest: ".tmp/config/"
+            rename: (dest, src) ->
+              dest + "config.coffee"
+          }
+        ]
+
       build:
         files: [
           {
@@ -88,8 +116,6 @@ module.exports = (grunt) ->
               "js/lib/*.js"
               "image/**"
               "fonts/*"
-              "routes.json"
-              "intro.json"
             ]
             dest: "dist/"
           }
@@ -98,14 +124,10 @@ module.exports = (grunt) ->
             cwd: ".tmp/"
             src: [
               "htaccess.dist"
-              "<%= buildEnv %>.json"
             ]
             dest: "dist/"
             rename: (dest, src) ->
-              if src is "htaccess.dist"
-                dest + ".htaccess"
-              else
-                dest + "config.json"
+              dest + ".htaccess"
           }
           {
             expand: true
@@ -224,7 +246,19 @@ module.exports = (grunt) ->
         configFile: "karma.e2e.conf.js"
 
     coffee:
-      compileDefault:
+      configDev:
+        files:
+          "app/js/config.js": [
+            "app/config/config.coffee"
+            "app/config/**/*.coffee"
+          ]
+      configProd:
+        files:
+          ".tmp/js/config.js": [
+            ".tmp/config/config.coffee"
+            ".tmp/config/**/*.coffee"
+          ]
+      scripts:
         files:
           "app/js/app.js": [
             "app/js/coffee/config.coffee"
@@ -245,34 +279,16 @@ module.exports = (grunt) ->
           no_trailing_whitespace:
             level: "error"
 
-    cson:
-      dev:
-        expand: true
-        src: [
-          'app/config.cson'
-          'app/routes.cson'
-          'app/intro.cson'
-        ]
-        dest: ''
-        ext: '.json'
-      prod:
-        expand: true
-        src: ['.tmp/*.cson' ]
-        dest: ''
-        ext: '.json'
     watch:
-      config:
-        files: ["app/**/*.cson"]
-        tasks: ["cson:dev"]
-        options:
-          atBegin: true
       scripts:
         files: [
+          "app/config/**/*.*"
           "app/js/coffee/**/*.*"
           "test/coffee/**/*.*"
         ]
         tasks: [
-          "coffee"
+          "coffee:configDev"
+          "coffee:scripts"
           "coffeelint"
           "concat:dev"
           "ngdocs"
@@ -292,7 +308,6 @@ module.exports = (grunt) ->
           livereload: true
 
         files: [
-          "app/*.json"
           "app/js/*.js"
           "app/css/styles.css"
           "app/index.*"
@@ -380,7 +395,6 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks "grunt-regex-replace"
   grunt.loadNpmTasks "grunt-karma"
   grunt.loadNpmTasks "grunt-coffeelint"
-  grunt.loadNpmTasks "grunt-cson"
   grunt.loadNpmTasks "grunt-concurrent"
   grunt.loadNpmTasks "grunt-ngdocs"
   grunt.loadNpmTasks "grunt-usemin"
@@ -410,7 +424,6 @@ module.exports = (grunt) ->
     'cssmin:generated'
     'uglify:generated'
     "regex-replace:manifest"
-    "cson:prod"
     "copy:build"
     "regex-replace:sourceMap"
     'filerev'
@@ -421,10 +434,12 @@ module.exports = (grunt) ->
   grunt.registerTask "build", [
     #    'test',
     "clean:build"
-    "coffee"
-    "concat:dev"
     "less:dev"
     "copy:tmp"
+    "copy:config"
+    "coffee:configProd"
+    "coffee:scripts"
+    "concat:prod"
     "html2js"
     "do-usemin"
     "clean:tmp"

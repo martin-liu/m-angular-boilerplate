@@ -1,5 +1,4 @@
 .DS_Store
-config.cson
 /dist
 node_modules
 app/components
@@ -11,6 +10,7 @@ app/.htaccess
 .tmp/
 *.iml
 .projectile
+app/js/config.js
 app/js/app.js
 app/js/local.js
 app/css/styles.css

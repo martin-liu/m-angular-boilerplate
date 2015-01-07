@@ -1,4 +1,4 @@
-[
+Config.intro = [
   {
     intro: "Hello World!"
     position: 'bottom'
