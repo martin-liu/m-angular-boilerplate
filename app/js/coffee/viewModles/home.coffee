@@ -1,5 +1,4 @@
-App.factory 'HomeViewModel', ($q, $location, $timeout, Constant
-, BaseViewModel, Util, Cache) ->
+App.factory 'HomeViewModel', (BaseViewModel, SampleRemoteService) ->
 
   class HomeViewModel extends BaseViewModel
     ## Override
@@ -10,6 +9,10 @@ App.factory 'HomeViewModel', ($q, $location, $timeout, Constant
           msg: "this is a test"
         }
       ]
+      SampleRemoteService.query("test").then (data)->
+        console.log "success with data: ", data
+      , (err)->
+        console.log "fail with err: ", err
 
     ## Override
     bindAction: =>
