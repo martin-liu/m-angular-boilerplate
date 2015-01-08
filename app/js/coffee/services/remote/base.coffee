@@ -1,5 +1,5 @@
 'use strict'
-App.factory 'BaseRemoteService', (Config, Restangular, Util) ->
+App.factory 'BaseRemoteService', (Config, Restangular, Util, $q, $timeout) ->
   class BaseRemoteService
     constructor: ->
       @rest = Restangular.all('')
@@ -21,3 +21,11 @@ App.factory 'BaseRemoteService', (Config, Restangular, Util) ->
           @rest.one(method).withHttpConfig(config).get param
         else
           @rest.one(method).get param
+
+    mockResult: (data, time = 1000)->
+      defer = $q.defer()
+      $timeout ->
+        defer.resolve data
+      , time
+
+      defer.promise
