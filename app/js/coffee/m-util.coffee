@@ -184,7 +184,7 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
 
       # convert arguments to array and cut off target object
       args = Array.prototype.slice.call(arguments, 1)
-      args.forEach (obj) ->
+      args.forEach (obj) =>
         return if typeof obj isnt "object"
         for key of obj
           continue unless key of obj
@@ -195,11 +195,6 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
           if typeof val isnt "object" or val is null
             target[key] = val
             continue
-          else if val instanceof Buffer
-            tmpBuf = new Buffer(val.length)
-            val.copy tmpBuf
-            target[key] = tmpBuf
-            continue
           else if val instanceof Date
             target[key] = new Date(val.getTime())
             continue
@@ -208,13 +203,13 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
             continue
           if typeof src isnt "object" or src is null
             clone = (if (Array.isArray(val)) then [] else {})
-            target[key] = deepExtend(clone, val)
+            target[key] = @deepExtend(clone, val)
             continue
           if Array.isArray(val)
             clone = (if (Array.isArray(src)) then src else [])
           else
             clone = (if (not Array.isArray(src)) then src else {})
-          target[key] = deepExtend(clone, val)
+          target[key] = @deepExtend(clone, val)
 
       target
 
