@@ -177,4 +177,45 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
         defer.promise
       doWait(maxTime)
 
+    deepExtend: -> #obj_1, [obj_2], [obj_N]
+      return false if arguments.length < 1 or typeof arguments[0] isnt "object"
+      return arguments[0] if arguments.length < 2
+      target = arguments[0]
+
+      # convert arguments to array and cut off target object
+      args = Array.prototype.slice.call(arguments, 1)
+      args.forEach (obj) ->
+        return if typeof obj isnt "object"
+        for key of obj
+          continue unless key of obj
+          src = target[key]
+          val = obj[key]
+          continue if val is target
+
+          if typeof val isnt "object" or val is null
+            target[key] = val
+            continue
+          else if val instanceof Buffer
+            tmpBuf = new Buffer(val.length)
+            val.copy tmpBuf
+            target[key] = tmpBuf
+            continue
+          else if val instanceof Date
+            target[key] = new Date(val.getTime())
+            continue
+          else if val instanceof RegExp
+            target[key] = new RegExp(val)
+            continue
+          if typeof src isnt "object" or src is null
+            clone = (if (Array.isArray(val)) then [] else {})
+            target[key] = deepExtend(clone, val)
+            continue
+          if Array.isArray(val)
+            clone = (if (Array.isArray(src)) then src else [])
+          else
+            clone = (if (not Array.isArray(src)) then src else {})
+          target[key] = deepExtend(clone, val)
+
+      target
+
   new Util()
