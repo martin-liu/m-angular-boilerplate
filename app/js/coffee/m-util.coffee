@@ -13,10 +13,8 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
         controller: ["$scope", "$modalInstance", "scope",
         ($scope, $modalInstance, scope)->
           $scope = angular.extend($scope, scope)
-          $scope.animate = Config.default.modalAnimateIn
           $scope.close = (data) ->
-            $scope.animate = Config.default.modalAnimateOut
-            $timeout (-> $modalInstance.close(data)),500
+            $modalInstance.close(data)
         ]
         resolve: {
           scope : ->
