@@ -413,7 +413,7 @@ module.exports = (grunt) ->
     "coffee:scripts"
     "coffeelint"
     "concat:dev"
-    "ngdocs"
+    #"ngdocs"
   ]
 
   grunt.registerTask 'do-usemin', [
