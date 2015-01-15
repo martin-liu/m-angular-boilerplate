@@ -157,7 +157,7 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
     removeHtmlTags: (str)->
       str.replace /<[^>]*>?/g, ''
 
-    waitUntil: (check, func, interval = 300, maxTime = 100)->
+    waitUntil: (func, check, interval = 300, maxTime = 100)->
       doWait = (time)->
         defer = $q.defer()
         if time == 0
