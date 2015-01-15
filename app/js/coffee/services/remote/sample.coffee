@@ -6,7 +6,13 @@ App.factory 'SampleRemoteService', (Restangular, BaseRemoteService) ->
       @rest = Restangular.all('sample')
 
     query: (param)->
-      @doQuery 'query', param, 300
+      @doQuery 'test1', param
 
     queryWithCanceler: (param, canceler)->
-      @doQuery 'testquery', param, 300, canceler
+      @doQuery 'test2', param, canceler
+
+    queryWithCache: (param)->
+      @doQueryWithCache 'test3', param, null, 300
+
+    queryWithCancelerAndCache: (param, canceler)->
+      @doQueryWithCache 'test4', param, canceler, 300
