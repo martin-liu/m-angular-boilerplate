@@ -14,13 +14,14 @@ App.factory 'BaseRemoteService', (Config, Restangular, Util, $q, $timeout) ->
     getWithCache: (method, param, func, timeout=300)->
       Util.getWithCache @getCacheKey(method, param), true, func, timeout
 
-    queryWithCanceler: (method, param, canceler) ->
-      @getWithCache method, param, ->
+    doQuery: (method, param, timeout=300, canceler) ->
+      @getWithCache method, param, =>
         if canceler && canceler.promise
           config = {timeout: canceler.promise}
           @rest.one(method).withHttpConfig(config).get param
         else
           @rest.one(method).get param
+      , timeout
 
     mockResult: (data, time = 1000)->
       defer = $q.defer()
