@@ -175,6 +175,26 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
         defer.promise
       doWait(maxTime)
 
+    recurUntil: (func, check, args, nextArgsFunc, maxTime = 100)->
+      doRecur = (time, lastRet)->
+        defer = $q.defer()
+        if time == 0
+          defer.reject('exceed 100 times check')
+        # initial
+        if time == maxTime
+          ret = func.apply @, args
+        else
+          ret = func.apply @, nextArgsFunc lastRet
+        if check ret
+          defer.resolve ret
+        else
+          doRecur(time - 1, ret).then (ret)->
+            defer.resolve ret
+          , (err)->
+            defer.reject err
+        defer.promise
+      doRecur(maxTime)
+
     deepExtend: -> #obj_1, [obj_2], [obj_N]
       return false if arguments.length < 1 or typeof arguments[0] isnt "object"
       return arguments[0] if arguments.length < 2
