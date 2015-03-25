@@ -160,38 +160,40 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
     waitUntil: (func, check, interval = 300, maxTime = 100)->
       doWait = (time)->
         defer = $q.defer()
-        if time == 0
-          defer.reject('exceed 100 times check')
-        ret = func()
-        if check ret
-          defer.resolve ret
+        if time <= 0
+          defer.reject "exceed #{maxTime} times check"
         else
-          $timeout =>
-            doWait(time - 1).then (ret)->
-              defer.resolve ret
-            , (err)->
-              defer.reject err
-          , interval
+          ret = func()
+          if check ret
+            defer.resolve ret
+          else
+            $timeout =>
+              doWait(time - 1).then (ret)->
+                defer.resolve ret
+              , (err)->
+                defer.reject err
+            , interval
         defer.promise
       doWait(maxTime)
 
     recurUntil: (func, check, args, nextArgsFunc, maxTime = 100)->
       doRecur = (time, lastRet)->
         defer = $q.defer()
-        if time == 0
-          defer.reject('exceed 100 times check')
-        # initial
-        if time == maxTime
-          ret = func.apply @, args
+        if time <= 0
+          defer.reject "exceed #{maxTime} times check"
         else
-          ret = func.apply @, nextArgsFunc lastRet
-        if check ret
-          defer.resolve ret
-        else
-          doRecur(time - 1, ret).then (ret)->
+          # initial
+          if time == maxTime
+            ret = func.apply @, args
+          else
+            ret = func.apply @, nextArgsFunc lastRet
+          if check ret
             defer.resolve ret
-          , (err)->
-            defer.reject err
+          else
+            doRecur(time - 1, ret).then (ret)->
+              defer.resolve ret
+            , (err)->
+              defer.reject err
         defer.promise
       doRecur(maxTime)
 
