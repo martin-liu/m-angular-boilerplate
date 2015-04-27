@@ -7,6 +7,7 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
     # Create a dialog in specific template
     createDialog: (template, scope, thenFunc, options) ->
       options ?= {}
+      closed = false
       options = angular.extend {
         backdropFade: true
         templateUrl: template
@@ -14,7 +15,9 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
         ($scope, $modalInstance, scope)->
           $scope = angular.extend($scope, scope)
           $scope.close = (data) ->
-            $modalInstance.close(data)
+            if not closed
+              $modalInstance.close(data)
+              closed = true
         ]
         resolve: {
           scope : ->
