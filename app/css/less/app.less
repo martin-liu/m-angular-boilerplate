@@ -109,16 +109,16 @@ body {
   transition-property: transform, opacity;
 }
 .float-shadow:hover, .float-shadow:focus, .float-shadow:active {
-  -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
-/* move the element up by 5px */
-}
+                                            -webkit-transform: translateY(-5px);
+                                            transform: translateY(-5px);
+                                            /* move the element up by 5px */
+                                          }
 .float-shadow:hover:before, .float-shadow:focus:before, .float-shadow:active:before {
-  opacity: 1;
-  -webkit-transform: translateY(5px);
-  transform: translateY(5px);
-/* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
-}
+                                                          opacity: 1;
+                                                          -webkit-transform: translateY(5px);
+                                                          transform: translateY(5px);
+                                                          /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
+                                                        }
 /* END: Animate */
 
 .app {
@@ -140,4 +140,28 @@ body {
 
 .breadcrumb {
   margin-top: 80px;
+}
+
+
+// Intro.js
+.introjs-showElement {
+  * {
+    color: black;
+  }
+}
+.introjs-tooltip {
+  min-width:400px;
+  min-height:100px;
+  max-width:1000px;
+
+  .introjs-tooltiptext {
+    font-weight: bold;
+  }
+}
+.introjs-helperNumberLayer {
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  top: 100%;
+  left: 45%;
 }
