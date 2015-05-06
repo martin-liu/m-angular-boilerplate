@@ -21,6 +21,12 @@ App.factory 'IntroService', (Config, Cache, $timeout)->
         steps: steps
       }
 
+      # refresh after change to prevent position:fixed issue
+      # position:fixed may cause calculation of position not correct
+      # FIXME: this seems not work in Firefox
+      intro.onafterchange (targetElement) ->
+        intro.refresh()
+
   init: () ->
     # Initial introducing
     initIntro()
