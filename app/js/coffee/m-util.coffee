@@ -148,7 +148,10 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
       else
         promise = getFunc()
         promise.then (data)->
-          cache.set key, data, timeout
+          try
+            cache.set key, data, timeout
+          catch e
+            console.log e
         return promise
 
     capitalize: (str) ->
