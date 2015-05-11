@@ -1,4 +1,4 @@
-Config.intro = [
+Config.intros = [
   {
     intro: "Hello World!"
     position: 'bottom'
