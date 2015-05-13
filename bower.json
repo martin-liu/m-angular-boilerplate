@@ -18,7 +18,8 @@
     "nprogress": "~0.1.6",
     "underscore.string": "~2.3.3",
     "modernizr": "~2.8.3",
-    "moment": "~2.9.0"
+    "moment": "~2.9.0",
+    "angular-carousel": "~0.3.10"
   },
   "devDependencies": {
     "less.js": "~1.6.3",

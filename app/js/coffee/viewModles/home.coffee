@@ -1,18 +1,19 @@
-App.factory 'HomeViewModel', (BaseViewModel, SampleRemoteService) ->
+App.factory 'HomeViewModel', ($window, $q, BaseViewModel, Constant, Util) ->
 
   class HomeViewModel extends BaseViewModel
     ## Override
+    initialize: =>
+      Util.waitUntil ->
+        dssui = $window.dssui
+        if dssui && dssui.globalheader && dssui.globalheader._config
+          dssui.globalheader._config
+      , (config) ->
+        !!config
+      .then (config)=>
+        @data.products = config.menus
+
+    ## Override
     bindView : =>
-      @data.announcements = [
-        {
-          date: "2014-01-01"
-          msg: "this is a test"
-        }
-      ]
-      SampleRemoteService.query("test").then (data)->
-        console.log "success with data: ", data
-      , (err)->
-        console.log "fail with err: ", err
 
     ## Override
     bindAction: =>

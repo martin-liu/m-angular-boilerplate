@@ -1,13 +1,29 @@
-<div style="margin: 100px">
-  This is the content
-  <m-loading></m-loading>
-  <m-no-result></m-no-result>
-  Announcement: <m-announcement announcements="vm.data.announcements"></m-announcement>
-
-  <hr/>
-  <div style="width:100px;height:100px;border:solid 1px"
-       m-fullscreen>
-    <i class="fa fa-arrows pull-right" data-toggle="m-fullscreen"></i>
-    Full Screen test
-  </div>
+<div class="col-md-12">
+    <div class="col-md-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">What's New</div>
+            <div class="panel-body">
+                Panel content
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading dss-products">
+                DSS Product Family
+                <ul rn-carousel class="">
+                    <li>slide #1</li>
+                    <li>slide #2</li>
+                    <li>slide #3</li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <ul rn-carousel class="image">
+                    <li ng-repeat="product in vm.data.products">
+                        <div class="layer">{{ product.title }}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
