@@ -14,6 +14,30 @@ App.factory 'HomeViewModel', ($window, $q, BaseViewModel, Constant, Util) ->
 
     ## Override
     bindView : =>
+      @state.curr = @data.products[0]
+
+      @scope.$watch =>
+        @state.curr
+      , (newV, oldV)=>
+        currId = @state.curr.id
+        Util.waitUntil ->
+          $("div.slick-active[data-slick-index]")
+        , (els)->
+          els.length > 0
+        .then (els)->
+          els.removeClass "product-active"
+          els.addClass (i)->
+            id = $(@).attr "data-product-id"
+            if currId == id
+              "product-active"
 
     ## Override
     bindAction: =>
+      slideChange: =>
+        @scope.$apply =>
+          index = _.indexOf @data.products, @state.curr
+          if index == @data.products.length - 1
+            index = 0
+          else
+            index = index + 1
+          @state.curr = @data.products[index]

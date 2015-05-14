@@ -1,7 +1,11 @@
 <div class="col-md-12">
     <div class="col-md-2">
         <div class="panel panel-default">
-            <div class="panel-heading">What's New</div>
+            <div class="panel-heading dss-new">
+                <h4>
+                    What's New
+                </h4>
+            </div>
             <div class="panel-body">
                 Panel content
             </div>
@@ -9,20 +13,35 @@
     </div>
     <div class="col-md-10">
         <div class="panel panel-default">
-            <div class="panel-heading dss-products">
-                DSS Product Family
-                <ul rn-carousel class="">
-                    <li>slide #1</li>
-                    <li>slide #2</li>
-                    <li>slide #3</li>
-                </ul>
+            <div class="panel-heading dss-products col-md-12">
+                <h3>DSS Product Family</h3>
+                <slick autoplay="true" dots="true" infinite="true"
+                       speed="300" slides-to-show="6" touch-move="false"
+                       slides-to-scroll="1"
+                       on-after-change="vm.actions.slideChange()"
+                       class="slider one-time"
+                       init-onload=true data="vm.data.products">
+                    <div ng-repeat="product in vm.data.products"
+                         ng-mouseover="vm.state.curr = product"
+                         class="dss-product col-md-2"
+                         data-product-id="{{product.id}}">
+                        <div class="dss-product-img {{product.imgClass}}"/>
+                        <div class="dss-product-title">
+                            {{ product.title }}
+                        </div>
+                        <a ng-href="{{product.url}}" target="_blank"
+                           class="dss-product-button btn btn-success">
+                            Go
+                        </a>
+                    </div>
+                </slick>
             </div>
             <div class="panel-body">
-                <ul rn-carousel class="image">
-                    <li ng-repeat="product in vm.data.products">
-                        <div class="layer">{{ product.title }}</div>
-                    </li>
-                </ul>
+                <div ng-repeat="product in vm.data.products"
+                     ng-show="vm.state.curr.id == product.id"
+                     class="dss-product-desc col-md-12 animate-fade-left">
+                    {{ product.title }}
+                </div>
             </div>
         </div>
     </div>
