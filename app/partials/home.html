@@ -16,16 +16,17 @@
             <div class="panel-heading dss-products col-md-12">
                 <h3>DSS Product Family</h3>
                 <slick autoplay="true" dots="true" infinite="true"
-                       speed="300" slides-to-show="6" touch-move="false"
+                       speed="500" slides-to-show="{{vm.actions.slidesToShow()}}"
+                       touch-move="false"
                        slides-to-scroll="1"
                        on-after-change="vm.actions.slideChange()"
                        class="slider one-time"
-                       init-onload=true data="vm.data.products">
+                       init-onload="true" data="vm.data.products">
                     <div ng-repeat="product in vm.data.products"
                          ng-mouseover="vm.state.curr = product"
                          class="dss-product col-md-2"
                          data-product-id="{{product.id}}">
-                        <div class="dss-product-img {{product.imgClass}}"/>
+                        <div class="dss-product-img {{product.imgClass}}"></div>
                         <div class="dss-product-title">
                             {{ product.title }}
                         </div>

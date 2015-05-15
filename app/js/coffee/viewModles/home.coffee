@@ -1,4 +1,5 @@
-App.factory 'HomeViewModel', ($window, $q, BaseViewModel, Constant, Util) ->
+App.factory 'HomeViewModel', ($timeout, $window, $q
+, BaseViewModel, Constant, Util) ->
 
   class HomeViewModel extends BaseViewModel
     ## Override
@@ -41,3 +42,7 @@ App.factory 'HomeViewModel', ($window, $q, BaseViewModel, Constant, Util) ->
           else
             index = index + 1
           @state.curr = @data.products[index]
+
+      slidesToShow: =>
+        width = $(document).width()
+        Math.min Math.floor(width/250), 6
