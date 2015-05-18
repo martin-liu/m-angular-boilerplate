@@ -227,7 +227,7 @@ module.exports = (grunt) ->
         actions: [
           name: "travis"
           search: /<base href="\/">/
-          replace: '<base <%= repoName %> href="\/<%= repoName %>\/">'
+          replace: '<base href="\/<%= repoName %>\/">'
         ]
 
       sourceMap:
