@@ -1,5 +1,6 @@
-App.factory 'BaseViewModel', ($q, $location, PiwikService, $timeout, $rootScope,
-AppInitService, Config, LoadingService, IntroService, NProgressService) ->
+App.factory 'BaseViewModel', ($q, $location, PiwikService
+, $timeout, $rootScope, AppInitService, Config
+, LoadingService, IntroService, NProgressService) ->
 
   class BaseViewModel
     constructor : (@scope)->
