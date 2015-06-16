@@ -8,7 +8,7 @@ angular.module('m-directive').directive 'mResize', ($window) ->
       h = w.innerHeight
       rate = attrs.mResize
       isFixed = attrs.mResizeFixed
-      min = attrs.mResizeMin
+      min = attrs.mResizeMin or 0
 
       if !rate
         rate = 100
@@ -18,7 +18,7 @@ angular.module('m-directive').directive 'mResize', ($window) ->
       if isFixed == 'true'
         element.css 'height', height
         element.css 'overflow-y', 'auto'
-        element.css 'overflow-x', 'hidden'
+        element.css 'overflow-x', 'auto'
       else
         element.css 'min-height', height
   }
