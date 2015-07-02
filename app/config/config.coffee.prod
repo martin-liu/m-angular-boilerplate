@@ -17,7 +17,7 @@ window.Config =
     siteId: 0
 
   intro:
-    enabled: false
+    enabled: true
 
   urlHtml5Mode: true
   version: "0.0.1"

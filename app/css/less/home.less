@@ -1,92 +1,10 @@
 .app {
   margin-top: 30px;
-
   .panel-heading {
     text-align: center;
   }
 
-  .dss-new {
-    height: 50px;
-  }
-
   .dss-products {
-
-    .slider {
-      width: 96%;
-      margin-left: 2%;
-    }
-
-    .slick-prev, .slick-next {
-      width: 30px;
-      height: 30px;
-
-      &:before {
-        font-size: 30px;
-        color: #737373;
-      }
-    }
-
-    // Dss product
-    .dss-product {
-      font-size: 15px;
-      width: 140px;
-      height: 140px;
-      margin: 2px 10px;
-      background-color: #ffffff;
-
-      border: 1px solid;
-      border-color: #dddddd;
-      border-radius: 5px;
-
-
-      .dss-product-img {
-        height: 50px;
-        margin: 20px 0;
-        background-image: url("../image/apple-touch-icon.png");
-        background-size: 50px;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
-
-      .dss-product-title {
-
-      }
-
-      .dss-product-button {
-        width: 80%;
-        padding: 0;
-        border: 0;
-        font-size: 18px;
-
-        position: absolute;
-        left: -999999px;
-        bottom: 0px;
-        height: 0px;
-
-        .lh-transition(height .2s .05s linear, bottom .05s linear, left .5s .25s linear);
-      }
-
-      &.product-active {
-        border-color: #b1cfef;
-        border-width: 2px;
-      }
-      &:hover {
-        border-color: #b1cfef;
-        border-width: 2px;
-
-        .dss-product-button {
-          height: 40px;
-          left: 10%;
-          line-height: 40px;
-          bottom: 10px;
-          .lh-transition(height .2s linear, bottom .05s .2s linear);
-        }
-      }
-
-      &:last-child {
-        display: none;
-      }
-    }
-
+    height: 100px;
   }
 }
