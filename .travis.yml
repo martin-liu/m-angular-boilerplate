@@ -5,7 +5,7 @@ before_script:
   - npm install -g grunt-cli
   - npm install -g bower
   - bower install
-script: npm run-script deploy
+script: npm run-script travis-deploy
 env:
  global:
  - GH_REF: github.com/martin-liu/m-angular-boilerplate.git

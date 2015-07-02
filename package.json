@@ -38,6 +38,6 @@
     "moment": "~2.7.0"
   },
   "scripts": {
-    "deploy": "./bin/deploy-ghpages.sh"
+    "travis-deploy": "./bin/travis-deploy-ghpages.sh"
   }
 }
