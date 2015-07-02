@@ -239,4 +239,26 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
 
       target
 
+    ###
+      process exclusive click event and dblclick event
+    ###
+    clicker: (clickFunc, dblclickFunc, delay = 500)->
+      clicks = 0
+      timer = null
+
+      ->
+        args = arguments
+        clicks += 1
+        if clicks == 1
+          timer = setTimeout =>
+            clicks = 0
+            if _.isFunction clickFunc
+              clickFunc.apply @, args
+          , delay
+        else
+          clicks = 0
+          clearTimeout timer
+          if _.isFunction dblclickFunc
+            dblclickFunc.apply @, args
+
   new Util()

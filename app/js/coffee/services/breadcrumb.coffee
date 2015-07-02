@@ -11,7 +11,8 @@ App.factory "breadcrumbs", [
           for key of @options
             if @options.hasOwnProperty(key)
               angular.forEach self.breadcrumbs, (breadcrumb) ->
-                breadcrumb.label = self.options[key]  if breadcrumb.label is key
+                if breadcrumb.label is key
+                  breadcrumb.label = self.options[key]
                 return
 
         @breadcrumbs
