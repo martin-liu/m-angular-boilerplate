@@ -13,14 +13,12 @@
         <link rel="shortcut icon">
         <base href="/">
 
-        <script src="//dssone.corp.ebay.com/static/libs/dssui/latest/init.js" async></script>
         <!-- build:css css/styles.lib.min.css -->
         <link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.css">
         <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" href="components/animate.css/animate.css">
         <link rel="stylesheet" href="components/intro.js/introjs.css">
         <link rel="stylesheet" href="components/nprogress/nprogress.css">
-        <link rel="stylesheet" href="components/angular-carousel/dist/angular-carousel.css">
         <!-- endbuild -->
 
         <!-- build:css css/styles.min.css -->
@@ -47,6 +45,42 @@
 
     </head>
     <body ng-animate="{enter: 'animated fadeInX'}" ng-cloak style="overflow-x: hidden">
+        <!-- HEADER -->
+        <div headroom intro-step="2" style="min-height:45px"
+             class="intro-step navbar navbar-inverse navbar-fixed-top animated slideInDown">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="navbar-brand" style="color:#fff">
+                        Title
+                    </a>
+                    <ul class="nav navbar-nav">
+                        <li class="float-shadow"
+                            ng-class="{active: currentPage == route.params.name}"
+                            ng-click="Util.redirect(route.url)"
+                            ng-repeat="route in config.routes">
+                            <a href="" ng-bind="route.params.label"></a>
+                        </li>
+                    </ul>
+                    <div class="nav nav-pills pull-right" style="margin-right:20px">
+                        <li>
+                            <a style="color: #999" href="mailto:">
+                                <i class="fa fa-envelope"></i></a>
+                        </li>
+                        <li>
+                            <a style="color: #999" href="" target="_blank">
+                                <i class="fa fa-question-circle"></i>
+                            </a>
+                        </li>
+                        <li ng-if="config.intro.enabled">
+                            <a style="color: #999" href="" target="_blank" ng-click="startIntro()">
+                                Tour
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <m-breadcrumb></m-breadcrumb>
 
         <!-- BODY -->
         <div class="app animate-fade-left-big" ng-view></div>
@@ -72,9 +106,6 @@
         <script src="components/nprogress/nprogress.js"></script>
 
         <script src="components/moment/moment.js"></script>
-
-        <script src="components/angular-touch/angular-touch.js"></script>
-        <script src="components/angular-carousel/dist/angular-carousel.js"></script>
 
         <!-- endbuild -->
 
