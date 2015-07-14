@@ -14,7 +14,7 @@ angular.module('m-directive').directive 'mResize', ($window) ->
         rate = 100
       r = rate / 100
 
-      height = Math.max(h * r, min)
+      height = Math.max(h * r, min) + 'px'
       if isFixed == 'true'
         element.css 'height', height
         element.css 'overflow-y', 'auto'
