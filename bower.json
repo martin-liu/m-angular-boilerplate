@@ -21,7 +21,6 @@
     "moment": "~2.9.0"
   },
   "devDependencies": {
-    "less.js": "~1.6.3",
     "angular-mocks": "1.2.22"
   },
   "resolutions": {
