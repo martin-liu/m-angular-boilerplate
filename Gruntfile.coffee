@@ -316,6 +316,7 @@ module.exports = (grunt) ->
             path: 'app',
             options:
               index: ['index.html', 'index.php']
+          livereload: true
           keepalive: true
           open: true
           useAvailablePort: true
