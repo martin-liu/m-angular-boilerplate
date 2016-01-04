@@ -312,7 +312,10 @@ module.exports = (grunt) ->
       server:
         options:
           port: 8000
-          base: 'app'
+          base:
+            path: 'app',
+            options:
+              index: ['index.html', 'index.php']
           keepalive: true
           open: true
           useAvailablePort: true

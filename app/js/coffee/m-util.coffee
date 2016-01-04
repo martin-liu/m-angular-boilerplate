@@ -1,9 +1,13 @@
 'use strict'
 angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
-, $anchorScroll, $window, $http, $templateCache
+, $anchorScroll, $window, $http, $templateCache, DomService
 , $compile, $q, $route, Cache) ->
-  class Util
+  new class Util
     alertTpl = 'partials/modal/alert.html'
+
+    constructor: ()->
+      @dom = DomService
+
     # Create a dialog in specific template
     createDialog: (template, scope, thenFunc, options) ->
       options ?= {}
@@ -260,5 +264,3 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
           clearTimeout timer
           if _.isFunction dblclickFunc
             dblclickFunc.apply @, args
-
-  new Util()
