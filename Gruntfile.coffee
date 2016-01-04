@@ -317,7 +317,8 @@ module.exports = (grunt) ->
             options:
               index: ['index.html', 'index.php']
               setHeaders: (res, path, stat) ->
-                res.setHeader 'Content-Type', 'text/html; charset=UTF-8'
+                if /\.php$/.test path
+                  res.setHeader 'Content-Type', 'text/html; charset=UTF-8'
           livereload: true
           keepalive: true
           open: true
