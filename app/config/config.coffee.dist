@@ -3,7 +3,7 @@ window.Config =
   uri:
     base: "/"
     host: "/"
-    api: "/api/"
+    api: "http://localhost:1337/"
 
   default:
     displayCount: 20

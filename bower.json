@@ -2,29 +2,30 @@
   "name": "M Angular Boilerplate",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "1.2.22",
-    "angular-route": "1.2.22",
-    "angular-sanitize": "1.2.22",
-    "angular-animate": "1.2.22",
-    "angular-bootstrap": "0.11.0",
-    "restangular": "~1.4.0",
+    "angular": "1.4.8",
+    "angular-route": "1.4.8",
+    "angular-sanitize": "1.4.8",
+    "angular-animate": "1.4.8",
+    "angular-bootstrap": "0.14.3",
+    "restangular": "~1.5.1",
     "animate.css": "~3.1.0",
     "bootstrap": "~3.1.1",
-    "font-awesome": "~4.2.0",
+    "font-awesome": "~4.5.0",
     "locache": "~0.4.2",
-    "headroom.js": "~0.6.0",
-    "angular-bindonce": "~0.3.1",
-    "intro.js": "~0.9.0",
-    "nprogress": "~0.1.6",
-    "underscore.string": "~2.3.3",
+    "headroom.js": "~0.7.0",
+    "angular-bindonce": "~0.3.3",
+    "intro.js": "~1.1.1",
+    "nprogress": "~0.2.0",
+    "lodash": "~3.10.1",
+    "underscore.string": "~3.2.2",
     "modernizr": "~2.8.3",
-    "moment": "~2.9.0"
+    "moment": "~2.11.0"
   },
   "devDependencies": {
-    "angular-mocks": "1.2.22"
+    "angular-mocks": "1.4.8"
   },
   "resolutions": {
     "bootstrap": "~3.1.1",
-    "angular": "1.2.22"
+    "angular": "1.4.8"
   }
 }

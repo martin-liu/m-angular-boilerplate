@@ -22,7 +22,7 @@
     </file>
   </example>
 ###
-angular.module('m-directive').directive 'mAnnouncement', ($position) ->
+angular.module('m-directive').directive 'mAnnouncement', ($uibPosition) ->
   restrict : 'AE'
   scope:
     announcements: '='
@@ -78,7 +78,7 @@ angular.module('m-directive').directive 'mAnnouncement', ($position) ->
       scope.$apply scope.stopFlash
 
       list.css 'display', 'block'
-      ttPosition = $position.positionElements icon, list
+      ttPosition = $uibPosition.positionElements icon, list
       , attrs.placement || 'right'
       ttPosition.top += 'px'
       ttPosition.left += 'px'

@@ -1,6 +1,7 @@
 "use strict"
 module.exports = (grunt) ->
   require("time-grunt") grunt
+  rewrite = require 'connect-modrewrite'
 
   # Project configuration.
   grunt.config.init
@@ -312,6 +313,10 @@ module.exports = (grunt) ->
       server:
         options:
           port: 8000
+          livereload: true
+          keepalive: true
+          open: true
+          useAvailablePort: true
           base:
             path: 'app',
             options:
@@ -319,10 +324,15 @@ module.exports = (grunt) ->
               setHeaders: (res, path, stat) ->
                 if /\.php$/.test path
                   res.setHeader 'Content-Type', 'text/html; charset=UTF-8'
-          livereload: true
-          keepalive: true
-          open: true
-          useAvailablePort: true
+          # http://danburzo.ro/grunt/chapters/server/
+          middleware: (connect, options, middlewares) ->
+            # mod-rewrite behavior
+            rules = [
+              '!\\.html|\\.js|\\.css|\\.svg|\\.jp(e?)g|\\.png|\\.gif|\\.woff2|\\.ttf$ /index.html'
+            ]
+            middlewares.unshift rewrite(rules)
+
+            return middlewares
 
     # Concurrent tasks
     concurrent:

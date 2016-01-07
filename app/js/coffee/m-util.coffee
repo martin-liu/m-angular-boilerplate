@@ -1,5 +1,5 @@
 'use strict'
-angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
+angular.module('m-util',[]).factory 'Util', ($uibModal, $timeout, $location
 , $anchorScroll, $window, $http, $templateCache, DomService
 , $compile, $q, $route, Cache) ->
   new class Util
@@ -15,12 +15,12 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
       options = angular.extend {
         backdropFade: true
         templateUrl: template
-        controller: ["$scope", "$modalInstance", "scope",
-        ($scope, $modalInstance, scope)->
+        controller: ["$scope", "$uibModalInstance", "scope",
+        ($scope, $uibModalInstance, scope)->
           $scope = angular.extend($scope, scope)
           $scope.close = (data) ->
             if not closed
-              $modalInstance.close(data)
+              $uibModalInstance.close(data)
               closed = true
         ]
         resolve: {
@@ -28,7 +28,7 @@ angular.module('m-util',[]).factory 'Util', ($modal, $timeout, $location
             scope
         }
       }, options
-      dialog = $modal.open options
+      dialog = $uibModal.open options
       dialog.result.then thenFunc
       dialog
 
