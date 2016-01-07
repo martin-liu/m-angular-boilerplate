@@ -3,6 +3,12 @@ module.exports = (grunt) ->
   require("time-grunt") grunt
   rewrite = require 'connect-modrewrite'
 
+  fs = require 'fs'
+  if fs.existsSync('app/index.html')
+    indexFile = 'index.html'
+  else
+    indexFile = 'index.php'
+
   # Project configuration.
   grunt.config.init
     buildEnv: grunt.option("buildEnv") or "prod"
@@ -318,9 +324,9 @@ module.exports = (grunt) ->
           open: true
           useAvailablePort: true
           base:
-            path: 'app',
+            path: 'app'
             options:
-              index: ['index.html', 'index.php']
+              index: indexFile
               setHeaders: (res, path, stat) ->
                 if /\.php$/.test path
                   res.setHeader 'Content-Type', 'text/html; charset=UTF-8'
@@ -328,7 +334,7 @@ module.exports = (grunt) ->
           middleware: (connect, options, middlewares) ->
             # mod-rewrite behavior
             rules = [
-              '!\\.html|\\.js|\\.css|\\.svg|\\.jp(e?)g|\\.png|\\.gif|\\.woff2|\\.ttf$ /index.html'
+              "!\\.html|\\.js|\\.css|\\.svg|\\.jp(e?)g|\\.png|\\.gif|\\.woff2|\\.ttf$ /#{indexFile}"
             ]
             middlewares.unshift rewrite(rules)
 
