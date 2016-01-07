@@ -101,18 +101,18 @@ Please see [wiki](https://github.com/martin-liu/m-angular-boilerplate/wiki)
 
 ### Highlight
 * Static file server for quick development
-    `grunt start` will start a web server on `http://localhost:8000`
+    + `grunt start` will start a web server on `http://localhost:8000`
 * Dev/test/build process, build with different config file in different env
-    `grunt build --buildEnv=prod `
+    + `grunt build --buildEnv=prod `
 * CacheBust, minify, uglify
 * Livereload
-    When js/html code change, the browser will auto refresh. When less/css code change, the browser will auto apply new styles
+    + When js/html code change, the browser will auto refresh. When less/css code change, the browser will auto apply new styles
 * Animation
-    Integrate [animate.css](https://github.com/daneden/animate.css/) with AngularJS, add class name like `.animate-fade` to an element, then it will `fade-in` when display and `fade-out` when dismiss. See [detail](https://github.com/martin-liu/m-angular-boilerplate/blob/master/app/js/coffee/services/animate.coffee)
+    + Integrate [animate.css](https://github.com/daneden/animate.css/) with AngularJS, add class name like `.animate-fade` to an element, then it will `fade-in` when display and `fade-out` when dismiss. See [detail](https://github.com/martin-liu/m-angular-boilerplate/blob/master/app/js/coffee/services/animate.coffee)
 * Modular && Inheritance support
 * Resueable UI functions/components
 * Local cache, persistence
-    Provide client cache with expire time for performance and reduce requests to server; `$rootScope.persistence` will auto be stored to localstorage, so that it can be used to record user's last status
+    + Provide client cache with expire time for performance and reduce requests to server; `$rootScope.persistence` will auto be stored to localstorage, so that it can be used to record user's last status
 * Global error handler
 * Travis build && auto push to github pages
   - Go to GitHub.com -> Settings -> Applications -> Personal Access Tokens — > Create new token, and copy it to your clipboard
