@@ -319,6 +319,7 @@ module.exports = (grunt) ->
       server:
         options:
           port: 8000
+          hostname: '127.0.0.1'
           livereload: true
           keepalive: true
           open: true
