@@ -19,5 +19,9 @@ window.Config =
   intro:
     enabled: true
 
+  # pingfederate SSO
+  PFSSO:
+    enabled: false
+
   urlHtml5Mode: true
   version: "0.0.1"

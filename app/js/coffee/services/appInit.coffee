@@ -1,7 +1,31 @@
 App.factory 'AppInitService', ($rootScope, $window, IntroService,
-$q, Util, Config, Cache, Constant) ->
+$http, $q, Util, Config, Cache, Constant) ->
   promises = []
   return {
+    initUser: ->
+      $rootScope.user = angular.fromJson localStorage.getItem 'user'
+      if not $rootScope.user and Config.PFSSO.enabled
+        $http({
+          method: 'GET',
+          url: document.location
+        }).then (res)->
+          nt = res.headers 'PF_AUTH_SUBJECT'
+          email = res.headers 'PF_AUTH_EMAIL'
+          firstName = res.headers 'PF_AUTH_FIRSTNAME'
+          lastName = res.headers 'PF_AUTH_LASTNAME'
+          displayName = lastName + ', ' + firstName
+
+          if nt
+            user =
+              nt : nt
+              firstName : firstName
+              lastName : lastName
+              email : email
+              displayName : displayName
+              label : displayName + '(' + nt + ')'
+            $rootScope.user = user
+            localStorage.setItem 'user', JSON.stringify(user)
+
     init: ->
       $rootScope.$on '$routeChangeSuccess', ($event, current) ->
         $rootScope.currentPage = current.name
@@ -10,7 +34,7 @@ $q, Util, Config, Cache, Constant) ->
 
       $rootScope.config = Config
 
-      $rootScope.user = angular.fromJson localStorage.getItem 'user'
+      @initUser()
 
       $rootScope.dict = {
         get : (key) ->
