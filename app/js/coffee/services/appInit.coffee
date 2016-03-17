@@ -4,7 +4,7 @@ $http, $q, Util, Config, Cache, Constant) ->
   return {
     initUser: ->
       $rootScope.user = angular.fromJson localStorage.getItem 'user'
-      if not $rootScope.user and Config.PFSSO.enabled
+      if not $rootScope.user and Config.PFSSO and Config.PFSSO.enabled
         $http({
           method: 'GET',
           url: document.location
@@ -25,6 +25,10 @@ $http, $q, Util, Config, Cache, Constant) ->
               label : displayName + '(' + nt + ')'
             $rootScope.user = user
             localStorage.setItem 'user', JSON.stringify(user)
+      else
+        defer = $q.defer()
+        defer.resolve()
+        defer.promise
 
     init: ->
       $rootScope.$on '$routeChangeSuccess', ($event, current) ->
@@ -34,7 +38,7 @@ $http, $q, Util, Config, Cache, Constant) ->
 
       $rootScope.config = Config
 
-      @initUser()
+      @add @initUser()
 
       $rootScope.dict = {
         get : (key) ->
