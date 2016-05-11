@@ -32,6 +32,22 @@ $http, $q, Util, Config, Cache, Constant) ->
 
       defer.promise
 
+    setupPersistence: (obj, cache)->
+      defer = $q.defer()
+      promises.push defer
+      # Wach to persist object in local/session storage
+      $rootScope.$watch =>
+        # use angular.toJson to remove internal properties like $$hashKey
+        angular.toJson obj
+      , (newVal, oldVal) =>
+        key = 'persistent_object'
+        if newVal == oldVal     # initial
+          _.extend obj, cache.get key
+          defer.resolve()
+        else
+          cache.set key, JSON.parse newVal
+      , true                    # equal
+
     init: ->
       $rootScope.$on '$routeChangeSuccess', ($event, current) ->
         $rootScope.currentPage = current.name
@@ -53,20 +69,9 @@ $http, $q, Util, Config, Cache, Constant) ->
         IntroService.start()
 
       $rootScope.persistence = {}
-      persistenceDefer = $q.defer()
-      promises.push persistenceDefer
-      # Watch to persist object in local storage
-      $rootScope.$watch =>
-        # use angular.toJson to remove internal properties like $$hashKey
-        angular.toJson $rootScope.persistence
-      , (newVal, oldVal) =>
-        key = 'persistent_object'
-        if newVal == oldVal     # initial
-          _.extend $rootScope.persistence, Cache.get key
-          persistenceDefer.resolve()
-        else
-          Cache.set key, JSON.parse newVal
-      , true                    # equal
+      $rootScope.session = {}
+      @setupPersistence $rootScope.persistence, Cache
+      @setupPersistence $rootScope.session, Cache.session
 
     add: (promise)->
       promises.push promise
